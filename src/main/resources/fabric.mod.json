@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "necronomicon",
+  "version": "1.0.0",
+
+  "name": "Necronomicon",
+  "description": "A library mod for ElocinDev's mods.",
+  "authors": [
+    "ElocinDev"
+  ],
+  "contact": {
+    "homepage": "https://curseforge.com/members/elocindev/projects",
+    "sources": "https://github.com/nvb-uy/Necronomicon"
+  },
+  "icon":"icon.png",
+  "license": "MIT",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "elocindev.necronomicon.Necronomicon"
+    ]
+  },
+  "mixins": [
+    "necronomicon.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.19",
+    "java": ">=17"
+  }
+}
