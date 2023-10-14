@@ -325,7 +325,7 @@ public class NecModelDatagenAPI {
      * @author ElocinDev
      * @since 1.0.3
     */
-    //$$ public static void ItemModelBuilder makeItem(RegistryObject<Item> item, String modid) {
+    //$$ public static ItemModelBuilder makeItem(RegistryObject<Item> item, String modid) {
     //$$     return withExistingParent(item.getId().getPath(),
     //$$             new ResourceLocation("item/generated")).texture("layer0",
     //$$             new ResourceLocation(modid,"item/" + item.getId().getPath()));
