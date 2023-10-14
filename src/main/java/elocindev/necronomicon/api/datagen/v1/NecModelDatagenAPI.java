@@ -24,6 +24,8 @@ import net.minecraft.util.Identifier;
 /**
  * A class containing methods to make model generation easier using Fabric's Data Generator.
  * 
+ * @apiNote SIDE: Fabric
+ * 
  * @see     NecRecipeDatagenAPI
  * @see     NecLootDatagenAPI
  * 
@@ -31,6 +33,8 @@ import net.minecraft.util.Identifier;
  * @since   1.0.0
  */
 public class NecModelDatagenAPI {
+    //#if FABRIC==1
+
     /**
      * Registers a whole woodset's model generation.
      * 
@@ -201,4 +205,6 @@ public class NecModelDatagenAPI {
         stateCollector.accept(ModelGenerator.createButtonBlockState(buttonBlock, identifier, identifier2));
         ModelGenerator.registerParentedItemModel(buttonBlock, identifier3, modelCollector);
     }
+
+    //#endif
 }

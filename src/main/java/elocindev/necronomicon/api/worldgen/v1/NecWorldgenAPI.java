@@ -1,20 +1,24 @@
 package elocindev.necronomicon.api.worldgen.v1;
 
-import elocindev.necronomicon.Necronomicon;
+//#if FABRIC==1
 import elocindev.necronomicon.worldgen.util.TreeFactory;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.StructureWorldAccess;
+//#endif
 
 /**
  * A class containing methods to generate stuff in features/structures.
  * Used mostly for Eldritch End.
  * 
+ * @apiNote SIDE: Fabric
+ * 
  * @author  ElocinDev
  * @since   1.0.0
  */
 public class NecWorldgenAPI {
-    
+    //#if FABRIC==1
+
     /**
      * Generates an eldritch medium tree with a random variant.
      * 
@@ -50,9 +54,12 @@ public class NecWorldgenAPI {
             case 1: TreeFactory.placeMediumDeadTree2(world, pos, block, leaves, withLeaves); break;
             case 2: TreeFactory.placeMediumDeadTree3(world, pos, block, leaves, withLeaves); break;
             default: {
-                Necronomicon.LOGGER.error("Invalid variant for medium tree: " + variant + ". Defaulting to variant 0.");
                 TreeFactory.placeMediumDeadTree1(world, pos, block, leaves, withLeaves); break;
             }
         }
     }
+
+    //#else
+    //$$ public void genMediumTree() { throw new UnsupportedOperationException("This method is fabric-only"); }
+    //#endif
 }

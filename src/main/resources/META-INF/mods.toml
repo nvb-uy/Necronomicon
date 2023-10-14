@@ -1,0 +1,25 @@
+modLoader="kotlinforforge"
+loaderVersion="*"
+license='Luna License'
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+credits="skyevg for the e4mc implementation"
+authors="ElocinDev"
+description='''
+The core mod for Luna Pixel Studios modpacks.
+'''
+[[dependencies.${mod_id}]]
+modId="forge"
+mandatory=true
+versionRange="*"
+ordering="NONE"
+side="BOTH"
+[[dependencies.${mod_id}]]
+modId="minecraft"
+mandatory=true
+versionRange="${mc_version == "1.19.4" ? "[1.19,)" : "[1.17,1.19)"}"
+ordering="NONE"
+side="BOTH"

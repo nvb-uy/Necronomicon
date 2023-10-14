@@ -1,31 +1,33 @@
 {
-  "schemaVersion": 1,
-  "id": "necronomicon",
-  "version": "1.0.1",
-
-  "name": "Necronomicon",
-  "description": "A library mod for ElocinDev's mods.",
-  "authors": [
-    "ElocinDev"
-  ],
-  "contact": {
-    "homepage": "https://curseforge.com/members/elocindev/projects",
-    "sources": "https://github.com/nvb-uy/Necronomicon"
-  },
-  "icon":"icon.png",
-  "license": "MIT",
-
-  "environment": "*",
-  "entrypoints": {
-    "main": [
-      "elocindev.necronomicon.Necronomicon"
-    ]
-  },
-  "mixins": [
-    "necronomicon.mixins.json"
-  ],
-  "depends": {
-    "fabricloader": ">=0.14.19",
-    "java": ">=17"
-  }
+    "schemaVersion": 1,
+    "id": "${mod_id}",
+    "version": "${mod_version}",
+    "name": "${mod_name}",
+    "description": "An utility library for my mods!",
+    "authors": [
+        "ElocinDev"
+    ],
+    "credits": [
+        "Joespeph"
+    ],
+    "license": "MIT",
+    "icon": "assets/necronomicon/icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            {
+                "adapter": "kotlin",
+                "value": "elocindev.necronomicon.Necronomicon"
+            }
+        ]
+    },
+    "mixins": [
+        "${mod_id}.mixins.json"
+    ],
+    "depends": {
+        "fabric": "*",
+        "fabricloader": ">=0.14.9",
+        "fabric-language-kotlin": "*",
+        "java": ">=16"
+    }
 }

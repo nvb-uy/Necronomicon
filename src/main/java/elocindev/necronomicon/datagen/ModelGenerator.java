@@ -1,5 +1,6 @@
 package elocindev.necronomicon.datagen;
 
+//#if FABRIC==1
 import com.google.gson.JsonElement;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
@@ -19,7 +20,9 @@ import net.minecraft.util.math.Direction;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
+//#endif
 
+//#if FABRIC==1
 public class ModelGenerator extends FabricModelProvider {
     public ModelGenerator(FabricDataOutput output) {
         super(output);
@@ -147,3 +150,7 @@ public class ModelGenerator extends FabricModelProvider {
         modelCollector.accept(ModelIds.getItemModelId(block.asItem()), new SimpleModelSupplier(parentModelId));
     }
 }
+//#else
+//$$ public class ModelGenerator {
+//$$ }
+//#endif
