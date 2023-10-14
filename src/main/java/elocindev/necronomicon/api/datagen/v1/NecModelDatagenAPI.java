@@ -1,4 +1,4 @@
-package elocindev.necronomicon.api.datagen;
+package elocindev.necronomicon.api.datagen.v1;
 
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;

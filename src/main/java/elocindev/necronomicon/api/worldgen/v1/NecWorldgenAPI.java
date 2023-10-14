@@ -1,4 +1,4 @@
-package elocindev.necronomicon.api.worldgen;
+package elocindev.necronomicon.api.worldgen.v1;
 
 import elocindev.necronomicon.Necronomicon;
 import elocindev.necronomicon.worldgen.util.TreeFactory;
