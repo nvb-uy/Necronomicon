@@ -15,6 +15,6 @@ repositories {
 
 ```
 dependencies { 
-  implementation fg.deobf("curse.maven:sirius-695681:{fileid}") 
+  implementation fg.deobf("curse.maven:necronomicon-586157:{fileid}") 
 }
 ```
