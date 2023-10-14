@@ -18,7 +18,8 @@ import net.minecraft.util.math.Vec3d;
 /**
  * A class containing a series of general utilities.
  * 
- * @apiNote     SIDE: Fabric, Forge
+ * @platform    Forge, Fabric
+ * @side        Client, Server
  * 
  * @author      ElocinDev
  * @since       1.0.0

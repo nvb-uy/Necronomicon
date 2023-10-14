@@ -11,7 +11,8 @@ import net.minecraft.world.StructureWorldAccess;
  * A class containing methods to generate stuff in features/structures.
  * Used mostly for Eldritch End.
  * 
- * @apiNote SIDE: Fabric
+ * @platform    Fabric
+ * @side        Client, Server
  * 
  * @author  ElocinDev
  * @since   1.0.0

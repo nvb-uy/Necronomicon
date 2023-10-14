@@ -34,7 +34,8 @@ import net.minecraft.util.Identifier;
 /**
  * A class containing methods to make model generation easier using Fabric's Data Generator.
  * 
- * @apiNote SIDE: Fabric
+ * @platform Fabric
+ * @side     Client
  * 
  * @see     NecRecipeDatagenAPI
  * @see     NecLootDatagenAPI
@@ -51,7 +52,7 @@ public class NecModelDatagenAPI {
      * @param item              The item to register the model for.
      * @param modelCollector    The model collector to register the model to.
      * 
-     * @side Fabric
+     * @platform Fabric
      * 
      * @author ElocinDev
      * @since 1.0.3
@@ -70,7 +71,7 @@ public class NecModelDatagenAPI {
      * 
      * @see NecModelDatagenAPI#makeItem
      * 
-     * @side Fabric
+     * @platform Fabric
      * 
      * @author ElocinDev
      * @since 1.0.3
@@ -85,7 +86,7 @@ public class NecModelDatagenAPI {
      * @param items                 An array that holds all items to be registered.
      * @param modelCollector        The model collector to register the model to.
      * 
-     * @side Fabric
+     * @platform Fabric
      * 
      * @author ElocinDev
      * @since 1.0.3
@@ -102,7 +103,7 @@ public class NecModelDatagenAPI {
      * @param blocks                An array that holds all blocks to register the item models.
      * @param modelCollector        The model collector to register the model to.
      * 
-     * @side Fabric
+     * @platform Fabric
      * 
      * @author ElocinDev
      * @since 1.0.3
@@ -119,7 +120,7 @@ public class NecModelDatagenAPI {
      * @param generator     The model generator to register the blocks to.
      * @param blocks        An array of blocks to register cube_all models for.
      * 
-     * @side Fabric
+     * @platform Fabric
      * 
      * @author ElocinDev
      * @since 1.0.0
@@ -146,7 +147,7 @@ public class NecModelDatagenAPI {
      * @see NecModelDatagenAPI#makeSlab
      * @see NecModelDatagenAPI#makeStairs
      * 
-     * @side Fabric
+     * @platform Fabric
      * 
      * @author ElocinDev
      * @since 1.0.0
@@ -167,7 +168,7 @@ public class NecModelDatagenAPI {
      * 
      * @see NecModelDatagenAPI#makeSlabStair
      * 
-     * @side Fabric
+     * @platform Fabric
      * 
      * @author ElocinDev
      * @since 1.0.0
@@ -186,7 +187,7 @@ public class NecModelDatagenAPI {
      * 
      * @see NecModelDatagenAPI#makeSlabStair
      *
-     * @side Fabric
+     * @platform Fabric
      * 
      * @author ElocinDev
      * @since 1.0.0
@@ -206,7 +207,7 @@ public class NecModelDatagenAPI {
      * @see NecModelDatagenAPI#makeSlab
      * @see NecModelDatagenAPI#makeStair
      * 
-     * @side Fabric
+     * @platform Fabric
      * 
      * @author ElocinDev
      * @since 1.0.0
@@ -224,7 +225,7 @@ public class NecModelDatagenAPI {
      * @param modelCollector    The model collector to register the model to.
      * @param stateCollector    The blockState collector to register the block state to.
      * 
-     * @side Fabric
+     * @platform Fabric
      * 
      * @author ElocinDev
      * @since 1.0.0
@@ -248,7 +249,7 @@ public class NecModelDatagenAPI {
      * @param modelCollector    The model collector to register the model to.
      * @param stateCollector    The blockState collector to register the block state to.
      * 
-     * @side Fabric
+     * @platform Fabric
      * 
      * @author ElocinDev
      * @since 1.0.0
@@ -270,7 +271,7 @@ public class NecModelDatagenAPI {
      * @param modelCollector    The model collector to register the model to.
      * @param stateCollector    The blockState collector to register the block state to.
      * 
-     * @side Fabric
+     * @platform Fabric
      * 
      * @author ElocinDev
      * @since 1.0.0
@@ -295,7 +296,7 @@ public class NecModelDatagenAPI {
      * @param modelCollector    The model collector to register the model to.
      * @param stateCollector    The blockState collector to register the bloc
      *
-     * @side Fabric
+     * @platform Fabric
      * 
      * @author ElocinDev
      * @since 1.0.0
@@ -312,13 +313,14 @@ public class NecModelDatagenAPI {
     }
 
     //#else
+    
     /**
      *  Registers a basic generated item model.
      * 
      * @param item             The item to register the model for.
      * @param modid            The modid of the mod parent of the item.
      * 
-     * @side Forge
+     * @platform Forge
      * 
      * @author ElocinDev
      * @since 1.0.3
