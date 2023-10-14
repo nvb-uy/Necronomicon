@@ -1,5 +1,7 @@
 package elocindev.necronomicon.api.datagen.v1;
 
+//#if FABRIC==1
+
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -17,9 +19,17 @@ import net.minecraft.data.client.MultipartBlockStateSupplier;
 import net.minecraft.data.client.TextureMap;
 import net.minecraft.data.client.VariantSettings;
 import net.minecraft.data.client.When;
+import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 
+//#else
+//$$ import net.minecraft.resources.ResourceLocation;
+//$$ import net.minecraft.world.item.Item;
+//$$ import net.minecraftforge.client.model.generators.ItemModelBuilder;
+//$$ import net.minecraftforge.registries.RegistryObject;
+//#endif
 
 /**
  * A class containing methods to make model generation easier using Fabric's Data Generator.
@@ -34,6 +44,91 @@ import net.minecraft.util.Identifier;
  */
 public class NecModelDatagenAPI {
     //#if FABRIC==1
+
+    /**
+     *  Registers a basic generated item model.
+     * 
+     * @param item              The item to register the model for.
+     * @param modelCollector    The model collector to register the model to.
+     * 
+     * @side Fabric
+     * 
+     * @author ElocinDev
+     * @since 1.0.3
+     */
+    public static void makeItem(Item item, BiConsumer<Identifier, Supplier<JsonElement>> modelCollector) {
+        if (item != Items.AIR) {
+            Models.GENERATED.upload(ModelIds.getItemModelId(item), TextureMap.layer0(item), modelCollector);
+        }
+    }
+
+    /**
+     *  Registers a block's BlockItem model.
+     * 
+     * @param block             The block to register the BlockItem model for.
+     * @param modelCollector    The model collector to register the model to.
+     * 
+     * @see NecModelDatagenAPI#makeItem
+     * 
+     * @side Fabric
+     * 
+     * @author ElocinDev
+     * @since 1.0.3
+     */
+    public static void makeItem(Block block, BiConsumer<Identifier, Supplier<JsonElement>> modelCollector) {
+        makeItem(block.asItem(), modelCollector);
+    }
+
+    /**
+     *  Registers a basic item model for an array of items.
+     * 
+     * @param items                 An array that holds all items to be registered.
+     * @param modelCollector        The model collector to register the model to.
+     * 
+     * @side Fabric
+     * 
+     * @author ElocinDev
+     * @since 1.0.3
+     */
+    public static void makeItems(Item[] items, BiConsumer<Identifier, Supplier<JsonElement>> modelCollector) {
+        for (Item item : items) {
+            makeItem(item, modelCollector);
+        }
+    }
+
+    /**
+     *  Registers a basic blockitem model for an array of blocks.
+     * 
+     * @param blocks                An array that holds all blocks to register the item models.
+     * @param modelCollector        The model collector to register the model to.
+     * 
+     * @side Fabric
+     * 
+     * @author ElocinDev
+     * @since 1.0.3
+     */
+    public static void makeItems(Block[] blocks, BiConsumer<Identifier, Supplier<JsonElement>> modelCollector) {
+        for (Block block : blocks) {
+            makeItem(block, modelCollector);
+        }
+    }
+
+    /**
+     *  Registers a series of cube_all models for blocks inside an array.
+     * 
+     * @param generator     The model generator to register the blocks to.
+     * @param blocks        An array of blocks to register cube_all models for.
+     * 
+     * @side Fabric
+     * 
+     * @author ElocinDev
+     * @since 1.0.0
+     */
+    public static void makeCubeAllBlocks(BlockStateModelGenerator generator, Block[] blocks) {
+        for (Block block : blocks) {
+            generator.registerSimpleCubeAll(block);
+        }
+    }
 
     /**
      * Registers a whole woodset's model generation.
@@ -51,26 +146,15 @@ public class NecModelDatagenAPI {
      * @see NecModelDatagenAPI#makeSlab
      * @see NecModelDatagenAPI#makeStairs
      * 
+     * @side Fabric
+     * 
      * @author ElocinDev
+     * @since 1.0.0
      */
     public static void makeWoodset(BlockStateModelGenerator generator, 
         Block planks, Block door, Block trapdoor, Block slab, Block stairs, Block button, Block fence, Block fenceGate) {
 
         ModelGenerator.registerWoodset(generator, planks, door, trapdoor, slab, stairs, button, fence, fenceGate);
-    }
-
-    /**
-     *  Registers a series of cube_all models for blocks inside an array.
-     * 
-     * @param generator     The model generator to register the blocks to.
-     * @param blocks        An array of blocks to register cube_all models for.
-     * 
-     * @author ElocinDev
-     */
-    public static void makeCubeAllBlocks(BlockStateModelGenerator generator, Block[] blocks) {
-        for (Block block : blocks) {
-            generator.registerSimpleCubeAll(block);
-        }
     }
 
     /**
@@ -83,7 +167,10 @@ public class NecModelDatagenAPI {
      * 
      * @see NecModelDatagenAPI#makeSlabStair
      * 
+     * @side Fabric
+     * 
      * @author ElocinDev
+     * @since 1.0.0
      */
     public static void makeSlab(Block slabBlock, Block parentBlock, BiConsumer<Identifier, Supplier<JsonElement>> modelCollector, Consumer<BlockStateSupplier> stateCollector) {
         ModelGenerator.registerSlab(slabBlock, parentBlock, modelCollector, stateCollector);
@@ -99,7 +186,10 @@ public class NecModelDatagenAPI {
      * 
      * @see NecModelDatagenAPI#makeSlabStair
      *
-     * @author ElocinDev 
+     * @side Fabric
+     * 
+     * @author ElocinDev
+     * @since 1.0.0
      */
     public static void makeStair(Block stairBlock, Block parentBlock, BiConsumer<Identifier, Supplier<JsonElement>> modelCollector, Consumer<BlockStateSupplier> stateCollector) {
         ModelGenerator.registerStairs(stairBlock, parentBlock, modelCollector, stateCollector);
@@ -116,7 +206,10 @@ public class NecModelDatagenAPI {
      * @see NecModelDatagenAPI#makeSlab
      * @see NecModelDatagenAPI#makeStair
      * 
+     * @side Fabric
+     * 
      * @author ElocinDev
+     * @since 1.0.0
      */
     public static void makeSlabStair(BlockStateModelGenerator generator, Block slab, Block stairs, Block parentBlock) {
         ModelGenerator.registerSlab(slab, parentBlock, generator.modelCollector, generator.blockStateCollector);
@@ -131,7 +224,10 @@ public class NecModelDatagenAPI {
      * @param modelCollector    The model collector to register the model to.
      * @param stateCollector    The blockState collector to register the block state to.
      * 
+     * @side Fabric
+     * 
      * @author ElocinDev
+     * @since 1.0.0
      */
     public static void makeBarBlock(Block barBlock, BiConsumer<Identifier, Supplier<JsonElement>> modelCollector, Consumer<BlockStateSupplier> stateCollector) {
         Identifier identifier = ModelIds.getBlockSubModelId(barBlock, "_post_ends");
@@ -152,7 +248,10 @@ public class NecModelDatagenAPI {
      * @param modelCollector    The model collector to register the model to.
      * @param stateCollector    The blockState collector to register the block state to.
      * 
+     * @side Fabric
+     * 
      * @author ElocinDev
+     * @since 1.0.0
      */
     public static void makeFenceBlock(Block fenceBlock, Block parentBlock, BiConsumer<Identifier, Supplier<JsonElement>> modelCollector, Consumer<BlockStateSupplier> stateCollector) {
         TextureMap textureMap = TextureMap.all(parentBlock);
@@ -171,7 +270,10 @@ public class NecModelDatagenAPI {
      * @param modelCollector    The model collector to register the model to.
      * @param stateCollector    The blockState collector to register the block state to.
      * 
+     * @side Fabric
+     * 
      * @author ElocinDev
+     * @since 1.0.0
      */
     public static void makeFenceGateBlock(Block fenceGateBlock, Block parentBlock, BiConsumer<Identifier, Supplier<JsonElement>> modelCollector, Consumer<BlockStateSupplier> stateCollector) {
         TextureMap textureMap = TextureMap.all(parentBlock);
@@ -193,7 +295,10 @@ public class NecModelDatagenAPI {
      * @param modelCollector    The model collector to register the model to.
      * @param stateCollector    The blockState collector to register the bloc
      *
+     * @side Fabric
+     * 
      * @author ElocinDev
+     * @since 1.0.0
      */
     public static void makeButtonBlock(Block buttonBlock, Block parentBlock, BiConsumer<Identifier, Supplier<JsonElement>> modelCollector, Consumer<BlockStateSupplier> stateCollector) {
         TextureMap textureMap = TextureMap.all(parentBlock);
@@ -206,5 +311,22 @@ public class NecModelDatagenAPI {
         ModelGenerator.registerParentedItemModel(buttonBlock, identifier3, modelCollector);
     }
 
+    //#else
+    /**
+     *  Registers a basic generated item model.
+     * 
+     * @param item             The item to register the model for.
+     * @param modid            The modid of the mod parent of the item.
+     * 
+     * @side Forge
+     * 
+     * @author ElocinDev
+     * @since 1.0.3
+    */
+    //$$ public static void ItemModelBuilder makeItem(RegistryObject<Item> item, String modid) {
+    //$$     return withExistingParent(item.getId().getPath(),
+    //$$             new ResourceLocation("item/generated")).texture("layer0",
+    //$$             new ResourceLocation(modid,"item/" + item.getId().getPath()));
+    //$$ }
     //#endif
 }
