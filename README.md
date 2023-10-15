@@ -12,6 +12,8 @@ An API to make less repetitive code, sync changes and bring parity to both loade
 
 🌿 Biomes API (Work in progress)
 
+🔧 NBT API that simplifies methods and makes them work in both loaders.
+
 🤝 Unifying utility methods that work for both loaders
 
 ## Using Necronomicon in your project
@@ -51,6 +53,7 @@ dependencies {
 | v1/datagen        | ✅ Yes| ⚠️ Partial|
 | v1/resource       | ✅ Yes| ✅ Yes|
 | v1/worldgen       | ✅ Yes| ❌ No |
+| v1/nbt            | ✅ Yes| ✅ Yes|
 | v1/biomes         | WIP   |  WIP   |
 | v1/events         | WIP   |  WIP   |
 | utils             | ✅ Yes| ✅ Yes|
