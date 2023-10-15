@@ -33,14 +33,13 @@ object Necronomicon : ModInitializer {
 //#endif
     const val NAME = "Necronomicon"
     const val ID = "necronomicon"
-    const val VERSION = "1.0.0"
     @JvmField
     val LOGGER: Logger = LoggerFactory.getLogger("necronomicon")
 
     //#if FABRIC==1
     override fun onInitialize() {
         LOGGER.info("Necronomicon Initialized")
-        ExampleConfigImpl.init()
+        CommonInitializer.init()
     }
     //#else
 

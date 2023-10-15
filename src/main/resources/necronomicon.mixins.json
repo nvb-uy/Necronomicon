@@ -6,6 +6,8 @@
     "defaultRequire": 1
   },
   "mixins": [],
-  "client": [],
+  "client": [
+    "client.DebugScreenMixin"
+  ],
   "server": []
 }
