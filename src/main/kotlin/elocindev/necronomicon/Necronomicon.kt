@@ -40,7 +40,7 @@ object Necronomicon : ModInitializer {
     //#if FABRIC==1
     override fun onInitialize() {
         LOGGER.info("Necronomicon Initialized")
-        Test.loadConfig()
+        ExampleConfigImpl.init()
     }
     //#else
 
