@@ -27,3 +27,13 @@ dependencies {
   modImplementation "curse.maven:necronomicon-586157:${necronomicon_fileid}"
 }
 ```
+
+
+# Feature Comparision (Forge vs Fabric)
+
+| Feature           | Fabric | Forge  |
+|-------------------|--------|--------|
+| v1/datagen        | ✅ Yes| ⚠️ Partial|
+| v1/resource       | ❌ No | ✅ Yes|
+| v1/worldgen       | ✅ Yes| ❌ No |
+| utils             | ✅ Yes| ✅ Yes|
