@@ -33,6 +33,7 @@ dependencies {
 
 | Feature           | Fabric | Forge  |
 |-------------------|--------|--------|
+| v1/config         | ✅ Yes| ✅ Yes|
 | v1/datagen        | ✅ Yes| ⚠️ Partial|
 | v1/resource       | ❌ No | ✅ Yes|
 | v1/worldgen       | ✅ Yes| ❌ No |
