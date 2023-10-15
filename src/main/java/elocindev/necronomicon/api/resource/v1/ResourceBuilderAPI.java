@@ -62,7 +62,7 @@ public class ResourceBuilderAPI {
         //#if FABRIC==0
         //$$ var pack = new PathPackResources(ModList.get().getModFileById(modid).getFile().getFileName() + ":" + path, true, path);
 
-        //$$ registerResourcePack(PackType.CLIENT_RESOURCES, () ->
+        //$$ registerResourcePack(packType, () ->
         //$$             Pack.create(
         //$$                     modid,
         //$$                     title,
