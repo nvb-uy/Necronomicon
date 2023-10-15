@@ -32,11 +32,18 @@ package elocindev.necronomicon.api.resource.v1;
  * @since 1.0.4
  */
 public class ResourceBuilderAPI {
-
+    /**
+     * The pack format for the current version of Minecraft.
+     * 
+     * @see <a href="https://minecraft.fandom.com/wiki/Pack_format">Pack format list from the Minecraft wiki</a>
+     * 
+     * @since 1.0.4
+     */
     public static final int PACK_FORMAT = 15;
 
     /**
      * Registers a builtin resource pack. Should be called in the constructor of your mod.
+     * Defaults to the current version's pack format.
      * 
      * @param modid             The modid of the mod registering the pack.
      * @param path              String path of your pack inside your mod's assets folder. (Ex. "resourcepacks/mypack")
@@ -67,6 +74,48 @@ public class ResourceBuilderAPI {
         //$$                     enabledDefault,
         //$$                     (s) -> pack,
         //$$                     new Pack.Info(description, PACK_FORMAT, FeatureFlagSet.of()),
+        //$$                     packType,
+        //$$                     pos,
+        //$$                     fixed,
+        //$$                     PackSource.BUILT_IN));
+        //#else
+        throw new UnsupportedOperationException("Not implemented in fabric yet!");
+        //#endif
+    }
+
+    /**
+     * Registers a builtin resource pack. Should be called in the constructor of your mod.
+     * 
+     * @param modid             : The modid of the mod registering the pack.
+     * @param path              : String path of your pack inside your mod's assets folder. (Ex. "resourcepacks/mypack")
+     * @param title             : The title of the pack.
+     * @param enabledDefault    : Whether the pack is enabled by default.
+     * @param description       : The description of the pack.
+     * @param packType          : The type of pack (Client or Server)
+     * @param pos               : The position of the pack in the pack list.
+     * @param fixed             : Whether the pack is fixed or not.
+     * @param packFormat        : The pack format of the pack. <a href="https://minecraft.fandom.com/wiki/Pack_format">Pack format list from the Minecraft wiki</a>
+     * 
+     * @platform                Forge
+     * @since 1.0.4
+     * 
+     * @author ElocinDev
+     */
+    
+    public static void registerBuiltinPack(String modid
+        //#if FABRIC==0
+        //$$, Path path, Component title, boolean enabledDefault, Component description, PackType packType, Pack.Position pos, boolean fixed, int packFormat
+        //#endif
+    ) {
+        //$$ var pack = new PathPackResources(ModList.get().getModFileById(modid).getFile().getFileName() + ":" + path, true, path);
+
+        //$$ registerResourcePack(packType, () ->
+        //$$             Pack.create(
+        //$$                     modid,
+        //$$                     title,
+        //$$                     enabledDefault,
+        //$$                     (s) -> pack,
+        //$$                     new Pack.Info(description, packFormat, FeatureFlagSet.of()),
         //$$                     packType,
         //$$                     pos,
         //$$                     fixed,
