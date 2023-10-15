@@ -1,5 +1,5 @@
 # Necronomicon API
-An API to make less repetitive code, sync changes across all my mods and easing the making of various stuff.
+An API to make less repetitive code, sync changes and .
 
 
 Integrating Necronomicon API in your project using CurseMaven (This does not yet support javadocs but I will probably implement a custom maven in the future)
@@ -36,4 +36,5 @@ dependencies {
 | v1/datagen        | ✅ Yes| ⚠️ Partial|
 | v1/resource       | ❌ No | ✅ Yes|
 | v1/worldgen       | ✅ Yes| ❌ No |
+| v1/biomes         | WIP   |  WIP   |
 | utils             | ✅ Yes| ✅ Yes|
