@@ -107,6 +107,7 @@ public class ResourceBuilderAPI {
         //$$, Path path, Component title, boolean enabledDefault, Component description, PackType packType, Pack.Position pos, boolean fixed, int packFormat
         //#endif
     ) {
+        //#if FABRIC==0
         //$$ var pack = new PathPackResources(ModList.get().getModFileById(modid).getFile().getFileName() + ":" + path, true, path);
 
         //$$ registerResourcePack(packType, () ->
