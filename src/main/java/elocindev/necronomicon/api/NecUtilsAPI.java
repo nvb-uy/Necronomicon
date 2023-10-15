@@ -13,7 +13,9 @@ import net.minecraft.util.math.Vec3d;
 //$$ import net.minecraft.world.entity.LivingEntity;
 //$$ import net.minecraft.resources.ResourceLocation;
 //$$ import net.minecraft.world.phys.Vec3;
+//$$ import net.minecraft.world.level.Level;
 //#endif
+import net.minecraft.world.World;
 
 /**
  * A class containing a series of general utilities.
@@ -76,5 +78,37 @@ public class NecUtilsAPI {
     //$$ public static ResourceLocation getEntityIdentifier(Entity entity) {
     //$$     return EntityType.getKey(entity.getType());
     //#endif
+    }
+
+    /**
+     * Gets the world time of an entity.
+     * 
+     * @platform        Forge, Fabric
+     * 
+     * @param entity    The entity to get the world time from.
+     * @return          [long] The time of the entity's world.
+     */
+    public static long getWorldTime(LivingEntity entity) {
+        return 
+            //#if FABRIC==1
+            entity.getWorld().getTime();
+            //#else
+            //$$ entity.getLevel().getGameTime();
+            //#endif;
+    }
+
+    public static long getWorldTime(
+        //#if FABRIC==1
+        World world
+        //#else
+        //$$ Level world
+        //#endif
+    ) { 
+        return 
+            //#if FABRIC==1
+            world.getTime();
+            //#else
+            //$$ world.getGameTime();
+            //#endif
     }
 }

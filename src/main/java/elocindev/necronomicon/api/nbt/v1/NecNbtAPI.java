@@ -2,6 +2,7 @@ package elocindev.necronomicon.api.nbt.v1;
 
 import java.util.UUID;
 
+import elocindev.necronomicon.api.NecUtilsAPI;
 //#if FABRIC==1
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -22,6 +23,60 @@ import net.minecraft.nbt.NbtCompound;
  * @author ElocinDev
  */
 public class NecNbtAPI {
+
+    /**
+     * Cooldown utility API.
+     * 
+     * @since 1.0.8
+     * @author ElocinDev
+     */
+    abstract class Cooldown {
+        /**
+         * Adds a cooldown value to the entity.
+         * 
+         * @param entity        The entity to add the cooldown to
+         * @param key           Key/identifier for the cooldown
+         * @param duration      Duration of the cooldown in ticks
+         * 
+         * @platform            Forge, Fabric
+         * 
+         * @author ElocinDev
+         * @since 1.0.8
+         */
+        public static void setCooldown(LivingEntity entity, String key, long duration) {
+            NecNbtAPI.Entity.putLong(entity, key, 
+                //#if FABRIC==1
+                    entity.getWorld().getTime()
+                //#else
+                //$$ entity.getLevel().getGameTime()
+                //#endif
+                    + duration
+            );
+        }
+
+        /**
+         * Gets the remaining cooldown in ticks for the entity.
+         * 
+         * @param entity    The entity to get the cooldown from
+         * @param key       Key/identifier for the cooldown
+         * @return          [long] remaining ticks, if not on cooldown, returns 0.
+         */
+        public static long getRemainingCooldown(LivingEntity entity, String key) {
+            long r = NecNbtAPI.Entity.getLong(entity, key) - NecUtilsAPI.getWorldTime(entity);
+            return r < 0 ? 0 : r;
+        }
+
+        /**
+         * Checks if the entity is on cooldown.
+         * 
+         * @param entity    The entity to check the cooldown for
+         * @param key       Key/identifier for the cooldown
+         * @return          [boolean] true if on cooldown, false if not
+         */
+        public static boolean isOnCooldown(LivingEntity entity, String key) {
+            return getRemainingCooldown(entity, key) > 0;
+        }
+    }
 
     /**
      * Entity NBT API. Unifies NBT methods for both Forge and Fabric.
