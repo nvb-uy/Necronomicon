@@ -1,7 +1,5 @@
 package elocindev.necronomicon.api.resource.v1;
 
-
-
 //#if FABRIC==0
 //$$ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
