@@ -30,17 +30,17 @@ repositories {
 ## Fabric
 ```
 dependencies { 
-  implementation fg.deobf("curse.maven:necronomicon-586157:${necronomicon_fileid}") 
+  modImplementation "curse.maven:necronomicon-586157:${necronomicon_fileid}"
 }
 ```
 
 ## Forge
-
 ```
 dependencies { 
-  modImplementation "curse.maven:necronomicon-586157:${necronomicon_fileid}"
+  implementation fg.deobf("curse.maven:necronomicon-586157:${necronomicon_fileid}") 
 }
 ```
+
 
 
 # Feature Comparision (Forge vs Fabric)
