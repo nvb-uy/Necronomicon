@@ -25,9 +25,12 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 
 //#else
+//$$import org.jetbrains.annotations.ApiStatus.Experimental;
+
 //$$ import net.minecraft.resources.ResourceLocation;
 //$$ import net.minecraft.world.item.Item;
 //$$ import net.minecraftforge.client.model.generators.ItemModelBuilder;
+//$$ import net.minecraftforge.client.model.generators.ItemModelProvider;
 //$$ import net.minecraftforge.registries.RegistryObject;
 //#endif
 
@@ -316,7 +319,10 @@ public class NecModelDatagenAPI {
     
     /**
      *  Registers a basic generated item model.
+     *  Experimental
      * 
+     * 
+     * @param instance         The instance of the class implementing ItemModelProvider.
      * @param item             The item to register the model for.
      * @param modid            The modid of the mod parent of the item.
      * 
@@ -325,8 +331,9 @@ public class NecModelDatagenAPI {
      * @author ElocinDev
      * @since 1.0.3
     */
-    //$$ public static ItemModelBuilder makeItem(RegistryObject<Item> item, String modid) {
-    //$$     return withExistingParent(item.getId().getPath(),
+    //$$ @Experimental
+    //$$ public static ItemModelBuilder makeItem(ItemModelProvider instance, RegistryObject<Item> item, String modid) {
+    //$$     return instance.withExistingParent(item.getId().getPath(),
     //$$             new ResourceLocation("item/generated")).texture("layer0",
     //$$             new ResourceLocation(modid,"item/" + item.getId().getPath()));
     //$$ }
