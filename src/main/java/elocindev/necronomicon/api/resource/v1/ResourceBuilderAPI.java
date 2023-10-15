@@ -1,5 +1,7 @@
 package elocindev.necronomicon.api.resource.v1;
 
+
+
 //#if FABRIC==0
 //$$ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
@@ -14,10 +16,14 @@ package elocindev.necronomicon.api.resource.v1;
 //$$ import net.minecraft.world.flag.FeatureFlagSet;
 //$$ import net.minecraftforge.event.AddPackFindersEvent;
 //$$ import net.minecraftforge.fml.ModList;
+
+//$$ import java.nio.file.Path;
+//$$ import java.util.function.Supplier;
+//$$ import org.jetbrains.annotations.Nullable;
+//$$ import java.util.function.Consumer;
+
 //#endif
 
-
-// Under Construction
 /**
  * Utility class for building builtin resource packs and other misc features.
  * 
@@ -28,6 +34,8 @@ package elocindev.necronomicon.api.resource.v1;
  * @since 1.0.4
  */
 public class ResourceBuilderAPI {
+
+    public static final int PACK_FORMAT = 15;
 
     /**
      * Registers a builtin resource pack. Should be called in the constructor of your mod.
@@ -52,7 +60,7 @@ public class ResourceBuilderAPI {
         //#endif
     ) {
         //#if FABRIC==0
-        //$$ var pack = new PathPackResources(ModList.get().getModFileById(MODID).getFile().getFileName() + ":" + path, true, path);
+        //$$ var pack = new PathPackResources(ModList.get().getModFileById(modid).getFile().getFileName() + ":" + path, true, path);
 
         //$$ registerResourcePack(PackType.CLIENT_RESOURCES, () ->
         //$$             Pack.create(
@@ -60,7 +68,7 @@ public class ResourceBuilderAPI {
         //$$                     title,
         //$$                     enabledDefault,
         //$$                     (s) -> pack,
-        //$$                     new Pack.Info(description, 18, FeatureFlagSet.of()),
+        //$$                     new Pack.Info(description, PACK_FORMAT, FeatureFlagSet.of()),
         //$$                     packType,
         //$$                     pos,
         //$$                     fixed,
@@ -69,7 +77,7 @@ public class ResourceBuilderAPI {
         throw new UnsupportedOperationException("Not implemented in fabric yet!");
         //#endif
     }
-
+    
     @SuppressWarnings("unused")
     private static void registerResourcePack(
         //#if FABRIC==0
