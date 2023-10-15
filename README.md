@@ -52,4 +52,5 @@ dependencies {
 | v1/resource       | ✅ Yes| ✅ Yes|
 | v1/worldgen       | ✅ Yes| ❌ No |
 | v1/biomes         | WIP   |  WIP   |
+| v1/events         | WIP   |  WIP   |
 | utils             | ✅ Yes| ✅ Yes|
