@@ -49,7 +49,7 @@ dependencies {
 |-------------------|--------|--------|
 | v1/config         | ✅ Yes| ✅ Yes|
 | v1/datagen        | ✅ Yes| ⚠️ Partial|
-| v1/resource       | ❌ No | ✅ Yes|
+| v1/resource       | ✅ Yes| ✅ Yes|
 | v1/worldgen       | ✅ Yes| ❌ No |
 | v1/biomes         | WIP   |  WIP   |
 | utils             | ✅ Yes| ✅ Yes|

@@ -1,5 +1,8 @@
 package elocindev.necronomicon.api.resource.v1;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 //#if FABRIC==0
 //$$ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
@@ -20,6 +23,12 @@ package elocindev.necronomicon.api.resource.v1;
 //$$ import org.jetbrains.annotations.Nullable;
 //$$ import java.util.function.Consumer;
 
+//#else
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
+import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 //#endif
 
 /**
@@ -32,6 +41,8 @@ package elocindev.necronomicon.api.resource.v1;
  * @since 1.0.4
  */
 public class ResourceBuilderAPI {
+    private static final Logger LOGGER = LoggerFactory.getLogger("necronomicon");
+
     /**
      * The pack format for the current version of Minecraft.
      * 
@@ -59,9 +70,12 @@ public class ResourceBuilderAPI {
      * 
      * @author ElocinDev
      */
+    //#if FABRIC==1
+    @Deprecated
+    //#endif
     public static void registerBuiltinPack(
         //#if FABRIC==0
-        //$$ String modid, Path path, Component title, boolean enabledDefault, Component description, PackType packType, Pack.Position pos, boolean fixed
+        //$$ String modid, Path path, Component title, boolean enabledDefault, Component description, PackType packType, Pack.Position pos, boolean fixed  
         //#endif
     ) {
         //#if FABRIC==0
@@ -79,7 +93,8 @@ public class ResourceBuilderAPI {
         //$$                     fixed,
         //$$                     PackSource.BUILT_IN));
         //#else
-        throw new UnsupportedOperationException("Not implemented in fabric yet!");
+
+        throw new UnsupportedOperationException("Forge only method");
         //#endif
     }
 
@@ -101,7 +116,9 @@ public class ResourceBuilderAPI {
      * 
      * @author ElocinDev
      */
-    
+    //#if FABRIC==1
+    @Deprecated
+    //#endif
     public static void registerBuiltinPack(String modid
         //#if FABRIC==0
         //$$, Path path, Component title, boolean enabledDefault, Component description, PackType packType, Pack.Position pos, boolean fixed, int packFormat
@@ -122,14 +139,42 @@ public class ResourceBuilderAPI {
         //$$                     fixed,
         //$$                     PackSource.BUILT_IN));
         //#else
-        throw new UnsupportedOperationException("Not implemented in fabric yet!");
+        throw new UnsupportedOperationException("Forge only method");
         //#endif
     }
+
+    //#if FABRIC==1
+    /**
+     *  Registers a builtin resource pack. Should be called in the initializer of your mod.
+     *  The pack will need to be added to the resourcepacks folder in your resources directory.
+     * 
+     * @param instance          The FabricLoader instance.
+     * @param modid             The modid of the mod registering the pack.
+     * @param id                The id of the pack. (This must match the name of the folder inside resourcepacks)
+     * @param description       A text adding a description of the pack, formatting works.
+     * @param enabledDefault    Whether the pack is enabled by default.
+     * @param fixed             Whether the pack is fixed or not.
+     * 
+     * @platform                Fabric
+     * @since 1.0.6
+     * 
+     * @author ElocinDev
+     */
+    public static void registerBuiltinPack(FabricLoader instance, String modid, String id, Text description, boolean enabledDefault, boolean fixed) {
+        if (instance == null) throw new IllegalArgumentException("Fabric loader instance is null, call this method after Fabric is loaded.");
+    
+        if (fixed) registerResourcePack(instance, modid, id, description, ResourcePackActivationType.ALWAYS_ENABLED);
+        else if (enabledDefault) registerResourcePack(instance, modid, id, description, ResourcePackActivationType.DEFAULT_ENABLED);
+        else registerResourcePack(instance, modid, id, description, ResourcePackActivationType.NORMAL);
+    }
+    //#endif
     
     @SuppressWarnings("unused")
     private static void registerResourcePack(
         //#if FABRIC==0
         //$$ PackType packType, @Nullable Supplier<Pack> packSupplier
+        //#else
+        FabricLoader instance, String modid, String id, Text description, ResourcePackActivationType type
         //#endif
     ) {
         //#if FABRIC==0
@@ -146,6 +191,11 @@ public class ResourceBuilderAPI {
         //$$ };
 
         //$$ bus.addListener(consumer);
+        //#else
+        instance.getModContainer(modid)
+                        .map(container -> ResourceManagerHelper.registerBuiltinResourcePack(new Identifier(modid, id),
+                                container, description, type))
+                        .filter(success -> !success).ifPresent(success -> LOGGER.warn("Could not register built-in resource pack. "+modid, id));
         //#endif
     }
 }
