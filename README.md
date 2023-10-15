@@ -6,7 +6,7 @@ An API to make less repetitive code, sync changes and bring parity to both loade
 
 🔄 Datagen utility API for Fabric (and partially for Forge)
 
-🌍 Dynamic Resource Generation API for Forge
+🌍 Dynamic Pack Generation API for both loaders
 
 🌏 Worldgen utility API for Fabric (Mostly feature generation)
 
