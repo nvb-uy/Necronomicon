@@ -25,7 +25,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 
 //#else
-//$$import org.jetbrains.annotations.ApiStatus.Experimental;
+//$$ import org.jetbrains.annotations.ApiStatus.Experimental;
 
 //$$ import net.minecraft.resources.ResourceLocation;
 //$$ import net.minecraft.world.item.Item;
