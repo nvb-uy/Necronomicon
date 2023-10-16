@@ -22,6 +22,7 @@ import net.minecraft.world.World;
  * 
  * @platform    Forge, Fabric
  * @side        Client, Server
+ * @minecraft   >= 1.17
  * 
  * @author      ElocinDev
  * @since       1.0.0
@@ -35,6 +36,9 @@ public class NecUtilsAPI {
      *
      * @see            MathUtils#getLookingVec
      * @return         [Vec3d | Vec3] representing the entity's looking direction.
+     * 
+     * @platform        Forge, Fabric
+     * @minecraft       >= 1.17
      * 
      * @author         ElocinDev
      */
@@ -53,6 +57,9 @@ public class NecUtilsAPI {
      * @param entity    The entity to get the id from.
      * @return          [String] The id of the entity as string (ex. minecraft:pig)
      * 
+     * @platform        Forge, Fabric
+     * @minecraft       >= 1.17
+     * 
      * @see             #getEntityIdentifier(Entity)
      * 
      * @author ElocinDev
@@ -66,6 +73,9 @@ public class NecUtilsAPI {
      * 
      * @param entity    The entity to get the id from.
      * @return          [Identifier | ResourceLocation] The id of the entity.
+     * 
+     * @platform        Forge, Fabric
+     * @minecraft       >= 1.17
      * 
      * @see             #getEntityId(Entity)
      * 
@@ -81,12 +91,13 @@ public class NecUtilsAPI {
     }
 
     /**
-     * Gets the world time of an entity.
+     * Gets the world's game time of an entity.
      * 
      * @platform        Forge, Fabric
+     * @minecraft       >= 1.17
      * 
      * @param entity    The entity to get the world time from.
-     * @return          [long] The time of the entity's world.
+     * @return          [long] The time in ticks of the entity's world.
      */
     public static long getWorldTime(LivingEntity entity) {
         return 
@@ -97,6 +108,15 @@ public class NecUtilsAPI {
             //#endif;
     }
 
+    /**
+     * Gets the world's game time.
+     * 
+     * @platform        Forge, Fabric
+     * @minecraft       >= 1.17
+     * 
+     * @param world     The world/level to get the world time from.
+     * @return          [long] The time in ticks of the entity's world.
+     */
     public static long getWorldTime(
         //#if FABRIC==1
         World world

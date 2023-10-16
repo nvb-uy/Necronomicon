@@ -37,15 +37,16 @@ import net.minecraft.util.Identifier;
 /**
  * A class containing methods to make model generation easier using Fabric's Data Generator.
  * 
- * @platform Fabric
- * @side     Client
+ * @platform    Fabric
+ * @side        Client
+ * @minecraft   >= 1.19.2
  * 
- * @see     NecRecipeDatagenAPI
- * @see     NecLootDatagenAPI
+ * @deprecated  Use {@link NecDatagenAPI.Model} instead.
  * 
  * @author  ElocinDev
  * @since   1.0.0
  */
+@Deprecated(since = "1.1.0", forRemoval = true)
 public class NecModelDatagenAPI {
     //#if FABRIC==1
 

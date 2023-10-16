@@ -36,6 +36,7 @@ import net.minecraft.util.Identifier;
  * 
  * @platform    Forge
  * @side        Both
+ * @minecraft   >= 1.20
  * 
  * @author ElocinDev
  * @since 1.0.4

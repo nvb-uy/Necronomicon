@@ -18,6 +18,7 @@ import net.minecraft.nbt.NbtCompound;
  * @see EntityCooldowns
  * 
  * @platform       Forge, Fabric
+ * @minecraft   >= 1.19.2
  * 
  * @since 1.0.8
  * @author ElocinDev

@@ -13,6 +13,7 @@ import net.minecraft.world.StructureWorldAccess;
  * 
  * @platform    Fabric
  * @side        Client, Server
+ * @minecraft   >= 1.17
  * 
  * @author  ElocinDev
  * @since   1.0.0
