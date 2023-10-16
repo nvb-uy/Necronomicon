@@ -1,4 +1,4 @@
-package elocindev.necronomicon.mixin.client;
+package elocindev.necronomicon.mixin.fabric.client;
 
 import java.util.List;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;

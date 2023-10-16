@@ -1,6 +1,6 @@
 {
   "required": false,
-  "package": "elocindev.necronomicon.mixin",
+  "package": "elocindev.necronomicon.mixin.fabric",
   "compatibilityLevel": "JAVA_16",
   "injectors": {
     "defaultRequire": 1

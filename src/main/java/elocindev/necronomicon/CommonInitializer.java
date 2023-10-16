@@ -3,7 +3,7 @@ package elocindev.necronomicon;
 import elocindev.necronomicon.api.config.v1.NecConfigAPI;
 
 public class CommonInitializer {
-    public static final String VERSION = "1.0.8";
+    public static final String VERSION = "1.0.9";
 
     /**
      * An example on how to register your custom config class.
