@@ -25,7 +25,7 @@ val bundle by configurations.creating {
 
 toolkitLoomHelper {
     if (mcData.isForge) {
-        useForgeMixin("necronomicon.mixins.json", true)
+        useForgeMixin("necronomicon.forge.mixins.json", true)
     }
 }
 
