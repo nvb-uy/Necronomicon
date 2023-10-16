@@ -19,16 +19,23 @@ jobs:
         java-version: 17
         distribution: 'adopt'
 
+    - name: Check commit message
+      id: check_commit_message
+      run: echo ::set-output name=commit_starts_with_version::$(echo "${{ github.event.head_commit.message }}" | grep -c '^version')
+
     - name: Build with Gradle
+      if: steps.check_commit_message.outputs.commit_starts_with_version == '1'
       run: |
-          chmod +x ./gradlew
-          ./gradlew build
+        chmod +x ./gradlew
+        ./gradlew build
 
     - name: Get project version
+      if: steps.check_commit_message.outputs.commit_starts_with_version == '1'
       id: get_version
       run: echo ::set-output name=version::$(grep -oP 'mod.version:\s+\K(.+)' ./gradlew.properties)
 
     - name: Create Fabric release
+      if: steps.check_commit_message.outputs.commit_starts_with_version == '1'
       id: create_fabric_release
       uses: actions/create-release@v1
       env:
@@ -42,6 +49,7 @@ jobs:
         prerelease: false
 
     - name: Create Forge release
+      if: steps.check_commit_message.outputs.commit_starts_with_version == '1'
       id: create_forge_release
       uses: actions/create-release@v1
       env:

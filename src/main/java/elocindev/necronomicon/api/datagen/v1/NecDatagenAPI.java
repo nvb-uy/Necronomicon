@@ -1,5 +1,6 @@
 package elocindev.necronomicon.api.datagen.v1;
 
+//#if FABRIC==1
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -21,6 +22,15 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
+//#else
+//$$ import org.jetbrains.annotations.ApiStatus.Experimental;
+
+//$$ import net.minecraft.resources.ResourceLocation;
+//$$ import net.minecraft.world.item.Item;
+//$$ import net.minecraftforge.client.model.generators.ItemModelBuilder;
+//$$ import net.minecraftforge.client.model.generators.ItemModelProvider;
+//$$ import net.minecraftforge.registries.RegistryObject;
+//#endif
 
 public class NecDatagenAPI {
     
