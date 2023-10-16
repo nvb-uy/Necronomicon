@@ -32,7 +32,7 @@ jobs:
       id: create_fabric_release
       uses: actions/create-release@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
       with:
         tag_name: "fabric-v${{ steps.get_version.outputs.version }}"
         release_name: "Fabric v${{ steps.get_version.outputs.version }}"
@@ -45,7 +45,7 @@ jobs:
       id: create_forge_release
       uses: actions/create-release@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
       with:
         tag_name: "forge-v${{ steps.get_version.outputs.version }}" 
         release_name: "Forge v${{ steps.get_version.outputs.version }}"
