@@ -1,0 +1,55 @@
+name: Publish Fabric and Forge Releases
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**'
+    if: "startsWith(github.event.head_commit.message, 'version')"
+
+jobs:
+  publish_releases:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        java-version: 17
+
+    - name: Build with Gradle
+      run: ./gradlew build
+
+    - name: Get project version
+      id: get_version
+      run: echo ::set-output name=version::$(grep -oP 'mod.version:\s+\K(.+)' ./gradlew.properties)
+
+    - name: Create Fabric release
+      id: create_fabric_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: "fabric-v${{ steps.get_version.outputs.version }}"
+        release_name: "Fabric v${{ steps.get_version.outputs.version }}"
+        body: |
+          Release for Fabric version ${{ steps.get_version.outputs.version }}
+        draft: false
+        prerelease: false
+
+    - name: Create Forge release
+      id: create_forge_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: "forge-v${{ steps.get_version.outputs.version }}"  # Modify this to match your desired tag name for Forge
+        release_name: "Forge v${{ steps.get_version.outputs.version }}"  # Modify this to match your desired release name for Forge
+        body: |
+          Release for Forge version ${{ steps.get_version.outputs.version }}
+        draft: false
+        prerelease: false
