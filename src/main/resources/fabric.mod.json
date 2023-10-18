@@ -15,10 +15,7 @@
     "environment": "*",
     "entrypoints": {
         "main": [
-            {
-                "adapter": "kotlin",
-                "value": "elocindev.necronomicon.Necronomicon"
-            }
+            "elocindev.necronomicon.CommonInitializer"            
         ]
     },
     "mixins": [
@@ -27,7 +24,6 @@
     "depends": {
         "fabric": "*",
         "fabricloader": ">=0.14.9",
-        "fabric-language-kotlin": "*",
         "java": ">=16"
     }
 }

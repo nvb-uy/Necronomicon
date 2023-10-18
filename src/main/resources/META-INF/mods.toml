@@ -1,4 +1,4 @@
-modLoader="kotlinforforge"
+modLoader="javafml"
 loaderVersion="*"
 license='MIT'
 
