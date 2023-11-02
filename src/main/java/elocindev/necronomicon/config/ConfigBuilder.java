@@ -3,6 +3,7 @@ package elocindev.necronomicon.config;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
+import elocindev.necronomicon.api.json.JsonFileAPI;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -48,7 +49,7 @@ public class ConfigBuilder {
             
                 JsonObject updatedJsonObject = BUILDER.fromJson(updatedJson, JsonObject.class);
                 JsonObject originalJsonObject = BUILDER.fromJson(json, JsonObject.class);
-            
+
                 for (String key : originalJsonObject.keySet()) {
                     if (!updatedJsonObject.has(key)) {
                         originalJsonObject.remove(key);
@@ -61,6 +62,8 @@ public class ConfigBuilder {
                     throw new RuntimeException("Failed to write the updated config to file.", e);
                 }
             
+                JsonFileAPI.setPrettyPrint(file);
+
                 return configEntries;
             }
         } catch (Exception e) {
