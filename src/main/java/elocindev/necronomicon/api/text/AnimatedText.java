@@ -3,6 +3,10 @@ package elocindev.necronomicon.api.text;
 //#if FABRIC==1
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
+//#else
+//$$ import net.minecraft.network.chat.Component;
+//$$ import net.minecraft.network.chat.MutableComponent;
+//#endif
 
 public enum AnimatedText {
     EMPTY(0, "empty"),
@@ -27,11 +31,30 @@ public enum AnimatedText {
     }
 
 
-    public MutableText getText(Text text) {
+    public 
+        //#if FABRIC==1
+        MutableText 
+        //#else
+        //$$ MutableComponent
+        //#endif
+    getText(Text text) {
         return this.getText(text, 0);
     }
 
-    public MutableText getText(Text text, int offset) {
+    public 
+        //#if FABRIC==1
+        MutableText 
+        //#else
+        //$$ MutableComponent
+        //#endif
+
+    getText(
+        //#if FABRIC==1
+        Text text, 
+        //#else
+        //$$ Component text, 
+        //#endif       
+    int offset) {
         switch (this) {
             case EMPTY -> {
                 return text.copy();
@@ -53,4 +76,3 @@ public enum AnimatedText {
         return text.copy();
     }
 }
-//#endif
