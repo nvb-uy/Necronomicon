@@ -15,6 +15,8 @@ It also implements some bug fixes to make my mods work properly.
 
 🔧 NBT API that simplifies methods and makes them work in both loaders.
 
+📝 Text API to add animated text and other misc stuff
+
 🤝 Unifying utility methods that work for both loaders
 
 ## Using Necronomicon in your project
@@ -53,8 +55,10 @@ dependencies {
 | v1/config         | ✅ Yes| ✅ Yes|
 | v1/datagen        | ✅ Yes| ⚠️ Partial|
 | v1/resource       | ✅ Yes| ✅ Yes|
-| v1/worldgen       | ✅ Yes| ❌ No |
+| v1/worldgen       | WIP    | WIP   |
 | v1/nbt            | ✅ Yes| ✅ Yes|
+| v1/text           | ✅ Yes| ✅ Yes|
 | v1/biomes         | WIP   |  WIP   |
 | v1/events         | WIP   |  WIP   |
 | utils             | ✅ Yes| ✅ Yes|
+| json              | ✅ Yes| ✅ Yes|
