@@ -15,12 +15,7 @@ plugins {
 }
 
 val bundle by configurations.creating {
-    // Fabric imposes a hard limit of 64 on mod IDs
-    // the autogenned mod IDs are far longer than that
-    // thanks, netty!
-    if (false /* mcData.isFabric */) {
-        configurations.getByName("include").extendsFrom(this)
-    } else configurations.getByName("shade").extendsFrom(this)
+    configurations.getByName("shade").extendsFrom(this)
 }
 
 toolkitLoomHelper {
