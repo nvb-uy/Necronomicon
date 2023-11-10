@@ -6,7 +6,7 @@ license='MIT'
 modId="${mod_id}"
 version="${mod_version}"
 displayName="${mod_name}"
-credits="Joespeph"
+credits="Joespeph, RXJpaw"
 authors="ElocinDev"
 description='''
 An utility library for my mods!
