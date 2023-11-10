@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import elocindev.necronomicon.api.config.v1.NecConfigAPI;
 
 //#if FABRIC==1
-import elocindev.necronomicon.example.AnimItemExample;
 import net.fabricmc.api.ModInitializer;
 //#else
 //$$ import net.minecraftforge.fml.common.Mod;
@@ -22,17 +21,13 @@ public class CommonInitializer implements ModInitializer {
     public static final Logger LOGGER = LoggerFactory.getLogger("necronomicon");
     public static final String VERSION = "1.3.0";
 
-    public static final boolean ENABLE_EXAMPLES = true;
+    public static final boolean ENABLE_EXAMPLES = false;
 
     //#if FABRIC==1
     @Override
     public void onInitialize() {
         LOGGER.info("Necronomicon Initialized");
         init();
-
-        if (ENABLE_EXAMPLES) {
-            AnimItemExample.init();
-        }
     }
     //#endif
 
