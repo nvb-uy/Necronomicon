@@ -5,7 +5,9 @@
   "injectors": {
     "defaultRequire": 1
   },
-  "mixins": [],
+  "mixins": [
+    "AnimatedItemNameMixin"
+  ],
   "client": [],
   "server": []
 }
