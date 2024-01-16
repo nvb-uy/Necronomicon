@@ -1,5 +1,6 @@
 package elocindev.necronomicon;
 
+import elocindev.necronomicon.config.Comment;
 import elocindev.necronomicon.config.NecConfig;
 import elocindev.necronomicon.api.config.v1.NecConfigAPI;
 
@@ -34,7 +35,7 @@ public class NecronomiconConfig {
      * @return  String : The instance of this class.
      */
     public static String getFile() {
-        return NecConfigAPI.getFile("necronomicon.json");
+        return NecConfigAPI.getFile("necronomicon.json5");
     }
 
     /**
@@ -43,7 +44,19 @@ public class NecronomiconConfig {
      * Their values will be saved as default in the file, but can be changed later by the user.
     **/
 
+
+    /**
+     * Comments. Requires getFile() to return a json5 file for readability purposes.
+     * The file will still get parsed the same way no matter the extension, but most text editors / IDEs won't support comments with json, so use json5 or jsonc
+     *
+     * @since 1.4.0
+     * @author ElocinDev
+     */
+    @Comment("This is used to debug stuff")
     public boolean debug = false;
+    @Comment("A test boolean")
     public boolean test = false;
+    @Comment("A list!")
+    @Comment("Supports multiple values using List.of()")
     public List<String> list = List.of("test", "test2");
 }
