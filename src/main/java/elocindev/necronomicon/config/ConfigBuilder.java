@@ -30,6 +30,8 @@ public class ConfigBuilder {
                     throw new RuntimeException("Failed to create an instance of the config class.", e);
                 }
 
+                processNestedConfigs(defaultConfig, configClass);
+
                 String defaultJson = BUILDER.toJson(defaultConfig);
                 StringBuffer buffer = new StringBuffer(defaultJson);
 
@@ -58,7 +60,9 @@ public class ConfigBuilder {
                 }
 
                 String withoutComments = preprocessJson(json);
+
                 T configEntries = BUILDER.fromJson(withoutComments, configClass);
+                processNestedConfigs(configEntries, configClass);
                 
                 String updatedJson = BUILDER.toJson(configEntries);
             
@@ -120,7 +124,7 @@ public class ConfigBuilder {
 
         int lineStartIndex = jsonBuffer.lastIndexOf("\n", fieldIndex) + 1;
 
-        String commentString = "    // " + comment + "\n";
+        String commentString = "  // " + comment + "\n";
 
         jsonBuffer.insert(lineStartIndex, commentString);
     }
@@ -137,5 +141,23 @@ public class ConfigBuilder {
         }
 
         return sj.toString();
+    }
+
+    private static <T> void processNestedConfigs(T configInstance, Class<?> configClass) {
+        for (Field field : configClass.getDeclaredFields()) {
+            if (field.isAnnotationPresent(NestedConfig.class)) {
+                field.setAccessible(true);
+                try {
+                    Object nestedConfig = field.get(configInstance);
+                    if (nestedConfig == null) {
+                        nestedConfig = field.getType().getDeclaredConstructor().newInstance();
+                        field.set(configInstance, nestedConfig);
+                    }
+                    processNestedConfigs(nestedConfig, field.getType());
+                } catch (Exception e) {
+                    throw new RuntimeException("Failed to process nested config field: " + field.getName(), e);
+                }
+            }
+        }
     }
 }
