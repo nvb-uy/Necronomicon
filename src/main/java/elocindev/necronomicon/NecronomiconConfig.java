@@ -21,17 +21,18 @@ import java.util.List;
  */
 public class NecronomiconConfig {
     /**
-     * The instance of this class.
+     * The instance of this config class.
      * 
      * Must be implemented with the annotation or the config will not load properly.
+     * Must be static, holds the values read from the file.
      */
     @NecConfig
     public static NecronomiconConfig INSTANCE;
 
     /**
-     * The main getter of the config class.
+     * NecConfig will call the getFile() method to get the path of the config as string.
      * 
-     * @apiNote Must not have any parameters and must return a String using {@link elocindev.necronomicon.api.config.v1.NecConfigAPI#getFile(String) NecConfigAPI#getFile}.
+     * @apiNote Must not have any parameters and must return a path as String, see {@link elocindev.necronomicon.api.config.v1.NecConfigAPI#getFile(String) NecConfigAPI#getFile}.
      * 
      * @return  String : The instance of this class.
      */
@@ -41,8 +42,10 @@ public class NecronomiconConfig {
 
     /**
      * The entries.
-     * All fields from this class will be registered as config entries, they must be public and serializable.
-     * Their values will be saved as default in the file, but can be changed later by the user.
+     * 
+     * All fields from this class will be registered as config entries, they must be public, non-static and serializable.
+     * The values defined in each field will represent the default config values in the file generated.
+     * 
     **/
 
 
@@ -67,7 +70,9 @@ public class NecronomiconConfig {
     
     /**
      * Defines a nested config on a dynamic class initializer.
-     * The default values of the config are defined in the class that's being initialized. 
+     * The default values of the config are defined in the class that's being initialized.
+     * 
+     * Access it through the INSTANCE of the config (@NecConfig).
      * 
      * @since 1.4.0
      * @author ElocinDev

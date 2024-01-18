@@ -63,25 +63,6 @@ public class ConfigBuilder {
 
                 T configEntries = BUILDER.fromJson(withoutComments, configClass);
                 processNestedConfigs(configEntries, configClass);
-                
-                String updatedJson = BUILDER.toJson(configEntries);
-            
-                JsonObject updatedJsonObject = BUILDER.fromJson(updatedJson, JsonObject.class);
-                JsonObject originalJsonObject = BUILDER.fromJson(json, JsonObject.class);
-
-                for (String key : originalJsonObject.keySet()) {
-                    if (!updatedJsonObject.has(key)) {
-                        originalJsonObject.remove(key);
-                    }
-                }
-
-                try {
-                    Files.writeString(file, originalJsonObject.toString());
-                } catch (IOException e) {
-                    throw new RuntimeException("Failed to write the updated config to file.", e);
-                }
-            
-                JsonFileAPI.setPrettyPrint(file);
 
                 return configEntries;
             }
