@@ -131,4 +131,22 @@ public class NecUtilsAPI {
             //$$ world.getGameTime();
             //#endif
     }
+
+    /**
+     * Returns true if a mod is loaded.
+     * 
+     * @platform        Forge, Fabric
+     * @minecraft       >= 1.17
+     * 
+     * @param modid     The Mod's ID
+     * @return          true if the mod is loaded, false otherwise.
+     */
+    public static boolean isModLoaded(String modid) {
+        return
+            //#if FABRIC==1
+            net.fabricmc.loader.api.FabricLoader.getInstance().isModLoaded(modid);
+            //#else
+            //$$ net.minecraftforge.fml.loading.FMLLoader.getLoadingModList().getModFileById(modid) != null;
+            //#endif
+    }
 }
