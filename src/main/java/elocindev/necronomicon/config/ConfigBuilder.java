@@ -2,8 +2,6 @@ package elocindev.necronomicon.config;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import elocindev.necronomicon.api.json.JsonFileAPI;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
