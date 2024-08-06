@@ -18,7 +18,7 @@ public class ResourceIdentifier {
         //? if <=1.20.4 {
         return new net.minecraft.resources.ResourceLocation(namespace, path);
         //? } else {
-        //return net.minecraft.resources.ResourceLocation.of(namespace, path);
+        //return net.minecraft.resources.ResourceLocation.tryBuild(namespace, path);
         //? }
     }
 
@@ -26,7 +26,7 @@ public class ResourceIdentifier {
         //? if <=1.20.1 {
         return new net.minecraft.resources.ResourceLocation(id);
         //? } else {
-        //return net.minecraft.resources.ResourceLocation.of(id);
+        //return net.minecraft.resources.ResourceLocation.tryParse(id);
         //? }
     }
 }
