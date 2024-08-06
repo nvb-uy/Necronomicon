@@ -7,7 +7,7 @@ plugins {
     id("me.modmuss50.mod-publish-plugin") version "0.5.+" apply false
     id("systems.manifold.manifold-gradle-plugin") version "0.0.2-alpha" apply false
 }
-stonecutter active "1.20.1-fabric" /* [SC] DO NOT EDIT */
+stonecutter active "1.21-neoforge" /* [SC] DO NOT EDIT */
 
 stonecutter registerChiseled tasks.register("chiseledBuild", stonecutter.chiseled) { 
     group = "project"

@@ -26,12 +26,12 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.Consumer;
 
 */
-//? } elif fabric {
-import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+//?} elif fabric {
+/*import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.network.chat.Component;
-//?}
+*///?}
 
 /**
  * Utility class for building builtin resource packs and other misc features.
@@ -138,7 +138,7 @@ public class ResourceBuilderAPI {
     
 
     //? if fabric {
-    /**
+    /*/^*
      *  Registers a builtin resource pack. Should be called in the initializer of your mod.
      *  The pack will need to be added to the resourcepacks folder in your resources directory.
      * 
@@ -153,7 +153,7 @@ public class ResourceBuilderAPI {
      * @since 1.0.6
      * 
      * @author ElocinDev
-     */
+     ^/
     public static void registerBuiltinPack(FabricLoader instance, String modid, String id, Component description, boolean enabledDefault, boolean fixed) {
         if (instance == null) throw new IllegalArgumentException("Fabric loader instance is null, call this method after Fabric is loaded.");
     
@@ -161,16 +161,16 @@ public class ResourceBuilderAPI {
         else if (enabledDefault) registerResourcePack(instance, modid, id, description, ResourcePackActivationType.DEFAULT_ENABLED);
         else registerResourcePack(instance, modid, id, description, ResourcePackActivationType.NORMAL);
     }
-    //? }
+    *///?}
     
     public static void registerResourcePack(
         //? if forge {
         /*
         PackType packType, @Nullable Supplier<Pack> packSupplier
         */
-        //? } elif fabric {
-        FabricLoader instance, String modid, String id, Component description, ResourcePackActivationType type
-        //?}
+        //?} elif fabric {
+        /*FabricLoader instance, String modid, String id, Component description, ResourcePackActivationType type
+        *///?}
     ) {
         //? if forge {
         /*
@@ -188,11 +188,11 @@ public class ResourceBuilderAPI {
 
         bus.addListener(consumer);
         */
-        //? } elif fabric {
-        instance.getModContainer(modid)
+        //?} elif fabric {
+        /*instance.getModContainer(modid)
                         .map(container -> ResourceManagerHelper.registerBuiltinResourcePack(ResourceIdentifier.of(modid, id),
                                 container, description, type))
                         .filter(success -> !success).ifPresent(success -> LOGGER.warn("Could not register built-in resource pack. "+modid, id));
-        //?}
+        *///?}
     }
 }

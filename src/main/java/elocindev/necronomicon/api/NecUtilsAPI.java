@@ -110,15 +110,15 @@ public class NecUtilsAPI {
     public static boolean isModLoaded(String modid) {
         return
             //? if fabric {
-            net.fabricmc.loader.api.FabricLoader.getInstance().isModLoaded(modid);
-            //? } elif forge {
+            /*net.fabricmc.loader.api.FabricLoader.getInstance().isModLoaded(modid);
+            *///?} elif forge {
             /*
             net.minecraftforge.fml.loading.FMLLoader.getLoadingModList().getModFileById(modid) != null;
              */
-            //? } elif neoforge {
-            /*
+            //?} elif neoforge {
+            
             net.neoforged.fml.loading.FMLLoader.getLoadingModList().getModFileById(modid) != null;
-             */
-            //? }
+             
+            //?}
     }
 }

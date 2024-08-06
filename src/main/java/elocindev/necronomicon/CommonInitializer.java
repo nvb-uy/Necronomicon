@@ -15,29 +15,24 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
 */
 //?} elif neoforge {
-/*
 
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+
 import net.neoforged.fml.common.Mod;
-import net.neoforged.bus.api.SubscribeEvent;
 
-*/
-//? }
+
+//?}
 
 
 //? if (forge || neoforge) {
-/*
 
-@Mod.EventBusSubscriber(modid = CommonInitializer.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 @Mod(CommonInitializer.MODID)
 public class CommonInitializer {
 
-*/
 //?} elif fabric {
-import net.fabricmc.api.ModInitializer;
+/*import net.fabricmc.api.ModInitializer;
 
 public class CommonInitializer implements ModInitializer {
-//? }
+*///?}
 
     public static final String MODID = "necronomicon";
     public static final Logger LOGGER = LoggerFactory.getLogger("necronomicon");
@@ -46,12 +41,19 @@ public class CommonInitializer implements ModInitializer {
     public static final boolean ENABLE_EXAMPLES = false;
 
     //? if fabric {
-    @Override
+    /*@Override
     public void onInitialize() {
         LOGGER.info("Necronomicon Initialized");
         init();
     }
-    //? }
+    *///?}
+
+    //? if forge || neoforge {
+    public CommonInitializer() {
+        LOGGER.info("Necronomicon Initialized");
+        init();
+    }
+    //?}
 
     /**
      * An example on how to register your custom config class.
@@ -77,14 +79,4 @@ public class CommonInitializer implements ModInitializer {
             }
         }
     }
-
-    //? if forge || neoforge {
-    /*
-    @SubscribeEvent
-    public void onCommonSetup(FMLCommonSetupEvent event) {
-        LOGGER.info("Necronomicon Initialized");
-        init();
-    }
-    */
-    //? }
 }
