@@ -31,8 +31,7 @@ import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
-//? }
+//?}
 
 /**
  * Utility class for building builtin resource packs and other misc features.
@@ -94,7 +93,7 @@ public class ResourceBuilderAPI {
     //                         PackSource.BUILT_IN));
     // }
     
-    //? }
+    //?}
 
     /**
      * Registers a builtin resource pack. Should be called in the constructor of your mod.
@@ -133,8 +132,9 @@ public class ResourceBuilderAPI {
                             fixed,
                             PackSource.BUILT_IN));
         }
-        */
-        //? }
+    
+    */
+    //?}
     
 
     //? if fabric {
@@ -170,7 +170,7 @@ public class ResourceBuilderAPI {
         */
         //? } elif fabric {
         FabricLoader instance, String modid, String id, Component description, ResourcePackActivationType type
-        //? }
+        //?}
     ) {
         //? if forge {
         /*
@@ -190,10 +190,9 @@ public class ResourceBuilderAPI {
         */
         //? } elif fabric {
         instance.getModContainer(modid)
-                        .map(container -> ResourceManagerHelper.registerBuiltinResourcePack(new ResourceLocation(modid, id),
+                        .map(container -> ResourceManagerHelper.registerBuiltinResourcePack(ResourceIdentifier.of(modid, id),
                                 container, description, type))
                         .filter(success -> !success).ifPresent(success -> LOGGER.warn("Could not register built-in resource pack. "+modid, id));
-        //? }
+        //?}
     }
 }
-//? }
