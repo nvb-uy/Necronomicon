@@ -7,6 +7,7 @@ import elocindev.necronomicon.api.text.IAnimatedText;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
+@SuppressWarnings("deprecation")
 public class FancyItem extends Item 
 
 //? if fabric {
