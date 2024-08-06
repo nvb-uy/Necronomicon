@@ -1,13 +1,12 @@
 package elocindev.necronomicon.api.text;
 
-//#if FABRIC==1
-import net.minecraft.text.MutableText;
-import net.minecraft.text.Text;
-//#else
-//$$ import net.minecraft.network.chat.Component;
-//$$ import net.minecraft.network.chat.MutableComponent;
-//#endif
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 
+/**
+ * @deprecated Use {@link elocindev.necronomicon.api.text.IGradientName} instead.
+ */
+@Deprecated
 public enum AnimatedText {
     EMPTY(0, "empty"),
     RAINBOW(1, "rainbow"),
@@ -31,29 +30,18 @@ public enum AnimatedText {
     }
 
 
-    public 
-        //#if FABRIC==1
-        MutableText 
-        //#else
-        //$$ MutableComponent
-        //#endif
-    getText(Text text) {
+    public MutableComponent getText(Component text) {
         return this.getText(text, 0);
     }
 
-    public 
-        //#if FABRIC==1
-        MutableText 
-        //#else
-        //$$ MutableComponent
-        //#endif
-
-    getText(
-        //#if FABRIC==1
-        Text text, 
-        //#else
-        //$$ Component text, 
-        //#endif       
+    public MutableComponent getText(
+        //? if fabric {
+        Component text,
+        //? } else {
+/*
+        Component text,
+        
+*/ //? }
     int offset) {
         switch (this) {
             case EMPTY -> {

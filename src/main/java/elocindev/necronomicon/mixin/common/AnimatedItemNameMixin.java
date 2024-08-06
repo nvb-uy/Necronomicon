@@ -1,32 +1,35 @@
-package elocindev.necronomicon.mixin.fabric;
+package elocindev.necronomicon.mixin.common;
 
-//#if FABRIC==1
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.text.MutableText;
-import net.minecraft.text.Text;
+//? if <=1.20.1 {
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import elocindev.necronomicon.api.text.IAnimatedText;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.world.item.ItemStack;
 
-// Credits to the awesome boykisser RXJpaw !
 @Mixin(ItemStack.class)
 public abstract class AnimatedItemNameMixin {
-    @Inject(method="getName", at = @At(value = "HEAD"), cancellable = true)
-    private void getName(CallbackInfoReturnable<Text> cir) {
+    @SuppressWarnings("deprecation")
+    @Inject(method="getHoverName", at = @At(value = "HEAD"), cancellable = true)
+    private void getName(CallbackInfoReturnable<Component> cir) {
         ItemStack stack = (ItemStack) (Object) this;
 
         if((Object) stack.getItem() instanceof IAnimatedText dynamicItemName) {
-            NbtCompound nbtCompound = stack.getSubNbt("display");
+            CompoundTag nbtCompound = stack.getTagElement("display");
 
             if (nbtCompound != null && nbtCompound.contains("Name", 8)) {
                 try {
-                    Text text = Text.Serializer.fromJson(nbtCompound.getString("Name"));
+                    Component text = Component.Serializer.fromJson(nbtCompound.getString("Name"));
+                    
                     if (text != null) {
-                        MutableText itemName = dynamicItemName.getAnimatedName(stack).getText(text);
+                        MutableComponent itemName = dynamicItemName.getAnimatedName(stack).getText(text);
+
                         cir.setReturnValue(itemName);
                         return;
                     }
@@ -37,9 +40,10 @@ public abstract class AnimatedItemNameMixin {
                 }
             }
 
-            MutableText itemName = dynamicItemName.getAnimatedName(stack).getText(stack.getItem().getName(stack));
+            MutableComponent itemName = dynamicItemName.getAnimatedName(stack).getText(stack.getItem().getName(stack));
             cir.setReturnValue(itemName);
         }
     }
 }
-//#endif
+
+//? }

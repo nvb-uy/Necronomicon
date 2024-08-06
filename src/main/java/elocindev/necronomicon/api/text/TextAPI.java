@@ -1,18 +1,10 @@
 package elocindev.necronomicon.api.text;
 
 import java.awt.Color;
-
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.Style;
 import elocindev.necronomicon.util.ColorUtils;
-
-//#if FABRIC==1
-import net.minecraft.text.MutableText;
-import net.minecraft.text.Style;
-import net.minecraft.text.Text;
-//#else
-//$$ import net.minecraft.network.chat.Component;
-//$$ import net.minecraft.network.chat.MutableComponent;
-//$$ import net.minecraft.network.chat.Style;
-//#endif
 
 /**
  * An API containing methods to set the style of a text.
@@ -35,11 +27,13 @@ public class TextAPI {
      * @author ElocinDev
      */
     public static void setStaticGradient(
-        //#if FABRIC==1
-        MutableText text,
-        //#else
-        //$$ MutableComponent text,
-        //#endif        
+        //? if fabric {
+        MutableComponent text,
+        //? } else {
+/*
+        MutableComponent text,
+        
+*/ //? }        
     int color1, int color2) {
         text.setStyle(Styles.getStaticGradient(text, color1, color2).getStyle());
     }
@@ -55,11 +49,13 @@ public class TextAPI {
      * @author ElocinDev
      */
     public static void setSlideGradient(
-        //#if FABRIC==1
-        MutableText text,
-        //#else
-        //$$ MutableComponent text,
-        //#endif       
+        //? if fabric {
+        MutableComponent text,
+        //? } else {
+/*
+        MutableComponent text,
+        
+*/ //? }       
     int offset, int color1, int color2, float tickrate) {
         text.setStyle(Styles.getGradient(text, offset, color1, color2, tickrate).getStyle());
     }
@@ -77,11 +73,13 @@ public class TextAPI {
      * @author ElocinDev
      */
     public static void setBreathingGradient(
-        //#if FABRIC==1
-        MutableText text,
-        //#else
-        //$$ MutableComponent text,
-        //#endif 
+        //? if fabric {
+        MutableComponent text,
+        //? } else {
+/*
+        MutableComponent text,
+        
+*/ //? } 
     int offset, int color1, int color2, float tickrate) {
         text.setStyle(Styles.getBreathingGradient(text, offset, color1, color2, tickrate).getStyle());
     }
@@ -97,11 +95,13 @@ public class TextAPI {
      * @author ElocinDev
      */
     public static void setRainbowGradient(
-        //#if FABRIC==1
-        MutableText text,
-        //#else
-        //$$ MutableComponent text,
-        //#endif 
+        //? if fabric {
+        MutableComponent text,
+        //? } else {
+/*
+        MutableComponent text,
+        
+*/ //? } 
     int offset, float tickrate) {
         text.setStyle(Styles.getRainbowGradient(text, offset, tickrate).getStyle());
     }
@@ -109,12 +109,14 @@ public class TextAPI {
 
 
     public class Styles {
-        public static MutableText getStaticGradient(
-            //#if FABRIC==1
-            Text text,
-            //#else
-            //$$ Component text,
-            //#endif
+        public static MutableComponent getStaticGradient(
+            //? if fabric {
+            Component text,
+            //? } else {
+/*
+            Component text,
+            
+*/ //? }
         int color1, int color2) {
             var gradientColor = getEmptyText();
 
@@ -124,19 +126,21 @@ public class TextAPI {
                 int color = ColorUtils.interpolate(color1, color2, (double) i / string.length());
                 Style style = Style.EMPTY.withColor(color);
 
-                gradientColor.append(Text.literal(String.valueOf(string.charAt(i))).setStyle(style));
+                gradientColor.append(Component.literal(String.valueOf(string.charAt(i))).setStyle(style));
             }
 
             return gradientColor;
         }
 
         // Credits RXJpaw
-        public static MutableText getGradient(
-            //#if FABRIC==1
-            Text text,
-            //#else
-            //$$ Component text,
-            //#endif
+        public static MutableComponent getGradient(
+            //? if fabric {
+            Component text,
+            //? } else {
+/*
+            Component text,
+            
+*/ //? }
         int offset, int color1, int color2, float tickrate) {
             long time = System.currentTimeMillis() / ((long) tickrate * 50L);
 
@@ -147,18 +151,20 @@ public class TextAPI {
                 double hue = (time - i - offset) % 45.0;
                 Style style = Style.EMPTY.withColor(ColorUtils.gradientSlide(((float) hue / 22.5F), new Color(color1), new Color(color2)).getRGB());
 
-                gradientColor.append(Text.literal(String.valueOf(string.charAt(i))).setStyle(style));
+                gradientColor.append(Component.literal(String.valueOf(string.charAt(i))).setStyle(style));
             }
 
             return gradientColor;
         }
 
-        public static MutableText getBreathingGradient(
-            //#if FABRIC==1
-            Text text,
-            //#else
-            //$$ Component text,
-            //#endif
+        public static MutableComponent getBreathingGradient(
+            //? if fabric {
+            Component text,
+            //? } else {
+/*
+            Component text,
+            
+*/ //? }
         int offset, int color1, int color2, float tickrate) {
             long time = System.currentTimeMillis() / ((long) tickrate * 50L);
 
@@ -172,18 +178,20 @@ public class TextAPI {
 
                 Style style = Style.EMPTY.withColor(color);
 
-                gradientColor.append(Text.literal(String.valueOf(string.charAt(i))).setStyle(style));
+                gradientColor.append(Component.literal(String.valueOf(string.charAt(i))).setStyle(style));
             }
 
             return gradientColor;
         }
 
-        public static MutableText getRainbowGradient(
-            //#if FABRIC==1
-            Text text,
-            //#else
-            //$$ Component text,
-            //#endif
+        public static MutableComponent getRainbowGradient(
+            //? if fabric {
+            Component text,
+            //? } else {
+/*
+            Component text,
+            
+*/ //? }
         int offset, float tickrate) {
             long time = System.currentTimeMillis() / ((long) tickrate * 50L);
             String string = text.getString();
@@ -194,7 +202,7 @@ public class TextAPI {
                 double hue = 1.0/90.0 * (time - i - offset);
                 Style style = Style.EMPTY.withColor(Color.HSBtoRGB((float) (hue % 360), 0.5F, 1.0F));
 
-                rainbowColor.append(Text.literal(String.valueOf(string.charAt(i))).setStyle(style));
+                rainbowColor.append(Component.literal(String.valueOf(string.charAt(i))).setStyle(style));
             }
 
             return rainbowColor;
@@ -202,16 +210,20 @@ public class TextAPI {
     }
 
     private static 
-        //#if FABRIC==1
-        MutableText
-        //#else
-        //$$ MutableComponent
-        //#endif
+        //? if fabric {
+        MutableComponent
+        //? } else {
+/*
+        MutableComponent
+        
+*/ //? }
     getEmptyText() {
-        //#if FABRIC==1
-        return Text.empty();
-        //#else
-        //$$ return Component.empty();
-        //#endif
+        //? if fabric {
+        return Component.empty();
+        //? } else {
+/*
+        return Component.empty();
+        
+*/ //? }
     }
 }

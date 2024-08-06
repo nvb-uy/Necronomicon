@@ -1,39 +1,38 @@
 package elocindev.necronomicon.item;
 
-//#if FABRIC==1
+//? if fabric {
 import elocindev.necronomicon.api.text.AnimatedText;
 import elocindev.necronomicon.api.text.IAnimatedText;
-//#endif
-
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+//? }
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 
 public class FancyItem extends Item 
 
-//#if FABRIC==1
+//? if fabric {
     implements IAnimatedText
-//#endif
+//? }
 
 {
-    //#if FABRIC==1
+    //? if fabric {
     public AnimatedText nameAnimation;
-    //#endif
+    //? }
 
-    public FancyItem(Settings settings 
-    //#if FABRIC==1
+    public FancyItem(Properties settings 
+    //? if fabric {
     , AnimatedText animatedTextType
-    //#endif
+    //? }
     ) {
         super(settings);
-        //#if FABRIC==1
+        //? if fabric {
         this.nameAnimation = animatedTextType;
-        //#endif
+        //? }
     }
 
-    //#if FABRIC==1
+    //? if fabric {
     @Override
     public AnimatedText getAnimatedName(ItemStack stack) {
        return this.nameAnimation;
     }
-    //#endif
+    //? }
 }

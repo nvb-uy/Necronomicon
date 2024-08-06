@@ -1,33 +1,40 @@
+# gradle
+
+.gradle/
+build/
+out/
+classes/
+
 # eclipse
-eclipse
-bin
+
 *.launch
-.settings
-.metadata
+
+# idea
+
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# vscode
+
+.settings/
+.vscode/
+bin/
 .classpath
 .project
 
-# idea
-out
-classes
-*.ipr
-*.iws
-*.iml
-/.idea/*
-!/.idea/gradle.xml
+# macos
 
-# netbeans
-.nb-gradle
-.nb-gradle-properties
+*.DS_Store
 
-# vs code
-.vscode
+# fabric
 
-# gradle
-build
-.gradle
+run/
 
-# other
-run
-.DS_Store
-Thumbs.db
+# java
+
+hs_err_*.log
+replay_*.log
+*.hprof
+*.jfr

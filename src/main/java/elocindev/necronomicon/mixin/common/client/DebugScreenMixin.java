@@ -1,26 +1,19 @@
-package elocindev.necronomicon.mixin.fabric.client;
+package elocindev.necronomicon.mixin.common.client;
 
 import java.util.List;
+import net.minecraft.client.gui.components.DebugScreenOverlay;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import elocindev.necronomicon.CommonInitializer;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 
-//#if FABRIC==1
-import net.minecraft.client.gui.hud.DebugHud;
-//#endif
+import elocindev.necronomicon.CommonInitializer;
 
-//#if FABRIC==1
-@Mixin(DebugHud.class)
-//#endif
+@Mixin(DebugScreenOverlay.class)
 public class DebugScreenMixin {
-    //#if FABRIC==1
-    @Inject(method = "getLeftText", at = @At("RETURN"))
+    @Inject(method = "getGameInformation", at = @At("RETURN"))
 	protected void getLeftText(CallbackInfoReturnable<List<String>> info) {
         info.getReturnValue().add("Necronomicon API v"+CommonInitializer.VERSION);
 	}
-    //#endif
 }

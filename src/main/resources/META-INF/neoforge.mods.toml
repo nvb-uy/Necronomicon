@@ -1,0 +1,23 @@
+modLoader="javafml"
+loaderVersion="*"
+license='MIT'
+
+[[mods]]
+    modId="${mod_id}"
+    version="${version}"
+    displayName="${name}"
+    credits="Joespeph, RXJpaw"
+    authors="ElocinDev"
+    description='''
+    ${description}
+    '''
+
+[[dependencies.${mod_id}]]
+    modId="forge"
+    mandatory=true
+    versionRange="*"
+    ordering="NONE"
+    side="BOTH"
+
+[[mixins]]
+config="${mod_id}-common.mixins.json"

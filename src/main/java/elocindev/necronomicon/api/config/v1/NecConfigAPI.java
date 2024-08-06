@@ -1,11 +1,17 @@
 package elocindev.necronomicon.api.config.v1;
 
 import elocindev.necronomicon.config.ConfigBuilder;
-//#if FABRIC==1
+//? if fabric {
 import net.fabricmc.loader.api.FabricLoader;
-//#else
-//$$ import net.minecraftforge.fml.loading.FMLPaths;
-//#endif
+//? } elif forge {
+/*
+import net.minecraftforge.fml.loading.FMLPaths;
+ */
+//? } elif neoforge {
+/*
+import net.neoforged.fml.loading.FMLPaths;
+ */
+//? }
 
 /**
  * Necronomicon's Config API. A simple way of doing JSON configs that supports both Forge and Fabric.
@@ -46,10 +52,12 @@ public class NecConfigAPI {
      * @author ElocinDev
      */
     public static String getFile(String file) {
-        //#if FABRIC==1
+        //? if fabric {
         return FabricLoader.getInstance().getConfigDir().resolve(file).toString();
-        //#else
-        //$$ return FMLPaths.GAMEDIR.get().toAbsolutePath().resolve("config").resolve(file).toString();
-        //#endif
+        //? } else {
+/*
+        return FMLPaths.GAMEDIR.get().toAbsolutePath().resolve("config").resolve(file).toString();
+        
+*/ //? }
     }
 }

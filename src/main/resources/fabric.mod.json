@@ -1,15 +1,11 @@
 {
     "schemaVersion": 1,
-    "id": "${mod_id}",
-    "version": "${mod_version}",
-    "name": "${mod_name}",
-    "description": "An utility library for my mods!",
+    "id": "${version}",
+    "version": "${version}",
+    "name": "${name}",
+    "description": "${description}",
     "authors": [
         "ElocinDev"
-    ],
-    "credits": [
-        "Joespeph",
-        "RXJpaw"
     ],
     "license": "MIT",
     "icon": "assets/necronomicon/icon.png",
@@ -20,11 +16,11 @@
         ]
     },
     "mixins": [
-        "${mod_id}.fabric.mixins.json"
+        "${mod_id}-common.mixins.json"
     ],
     "depends": {
         "fabric": "*",
-        "fabricloader": ">=0.14.9",
+        "fabricloader": ">=0.15.0",
         "java": ">=16"
     }
 }

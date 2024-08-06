@@ -1,21 +1,12 @@
 package elocindev.necronomicon.api;
 
 import elocindev.necronomicon.math.MathUtils;
-//#if FABRIC==1
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.math.Vec3d;
-//#else
-//$$ import net.minecraft.world.entity.Entity;
-//$$ import net.minecraft.world.entity.EntityType;
-//$$ import net.minecraft.world.entity.LivingEntity;
-//$$ import net.minecraft.resources.ResourceLocation;
-//$$ import net.minecraft.world.phys.Vec3;
-//$$ import net.minecraft.world.level.Level;
-//#endif
-import net.minecraft.world.World;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 
 /**
  * A class containing a series of general utilities.
@@ -42,12 +33,7 @@ public class NecUtilsAPI {
      * 
      * @author         ElocinDev
      */
-    //#if FABRIC==1
-    public static Vec3d getLookVec(LivingEntity entity) {
-    //#else
-    //$$ public static Vec3 getLookVec(LivingEntity entity) {
-    //#endif
-
+    public static Vec3 getLookVec(LivingEntity entity) {
         return MathUtils.getLookingVec(entity);
     }
 
@@ -81,13 +67,8 @@ public class NecUtilsAPI {
      * 
      * @author ElocinDev
      */
-    //#if FABRIC==1
-    public static Identifier getEntityIdentifier(Entity entity) { 
-        return EntityType.getId(entity.getType());
-    //#else
-    //$$ public static ResourceLocation getEntityIdentifier(Entity entity) {
-    //$$     return EntityType.getKey(entity.getType());
-    //#endif
+    public static ResourceLocation getEntityIdentifier(Entity entity) { 
+        return EntityType.getKey(entity.getType());
     }
 
     /**
@@ -100,12 +81,7 @@ public class NecUtilsAPI {
      * @return          [long] The time in ticks of the entity's world.
      */
     public static long getWorldTime(LivingEntity entity) {
-        return 
-            //#if FABRIC==1
-            entity.getWorld().getTime();
-            //#else
-            //$$ entity.getLevel().getGameTime();
-            //#endif;
+        return entity.level().getGameTime();
     }
 
     /**
@@ -117,19 +93,9 @@ public class NecUtilsAPI {
      * @param world     The world/level to get the world time from.
      * @return          [long] The time in ticks of the entity's world.
      */
-    public static long getWorldTime(
-        //#if FABRIC==1
-        World world
-        //#else
-        //$$ Level world
-        //#endif
-    ) { 
-        return 
-            //#if FABRIC==1
-            world.getTime();
-            //#else
-            //$$ world.getGameTime();
-            //#endif
+    public static long getWorldTime(Level world) { 
+        return world.getGameTime();
+
     }
 
     /**
@@ -143,10 +109,16 @@ public class NecUtilsAPI {
      */
     public static boolean isModLoaded(String modid) {
         return
-            //#if FABRIC==1
+            //? if fabric {
             net.fabricmc.loader.api.FabricLoader.getInstance().isModLoaded(modid);
-            //#else
-            //$$ net.minecraftforge.fml.loading.FMLLoader.getLoadingModList().getModFileById(modid) != null;
-            //#endif
+            //? } elif forge {
+            /*
+            net.minecraftforge.fml.loading.FMLLoader.getLoadingModList().getModFileById(modid) != null;
+             */
+            //? } elif neoforge {
+            /*
+            net.neoforged.fml.loading.FMLLoader.getLoadingModList().getModFileById(modid) != null;
+             */
+            //? }
     }
 }

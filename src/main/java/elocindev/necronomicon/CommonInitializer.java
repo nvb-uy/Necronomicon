@@ -6,34 +6,41 @@ import org.slf4j.LoggerFactory;
 import elocindev.necronomicon.api.NecUtilsAPI;
 import elocindev.necronomicon.api.config.v1.NecConfigAPI;
 
-//#if FABRIC==1
-import net.fabricmc.api.ModInitializer;
-//#else
-//$$ import net.minecraftforge.fml.common.Mod;
-//$$ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-//$$ import net.minecraftforge.eventbus.api.SubscribeEvent;
-//#endif
+//? if forge {
+// import net.minecraftforge.eventbus.api.SubscribeEvent;
+// import net.minecraftforge.fml.common.Mod;
+// import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+//?} elif neoforge {
+// import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+// import net.neoforged.fml.common.Mod;
+// import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+//? }
 
-//#if FORGE==1
-//$$ @Mod.EventBusSubscriber(modid = CommonInitializer.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-//$$ @Mod(CommonInitializer.MODID)
-//$$ public class CommonInitializer {
-//#else
+
+//? if (forge || neoforge) {
+// @Mod.EventBusSubscriber(modid = CommonInitializer.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+// @Mod(CommonInitializer.MODID)
+// public class CommonInitializer {
+
+//?} elif fabric {
+import net.fabricmc.api.ModInitializer;
+
 public class CommonInitializer implements ModInitializer {
-//#endif
+//? }
+
     public static final String MODID = "necronomicon";
     public static final Logger LOGGER = LoggerFactory.getLogger("necronomicon");
-    public static final String VERSION = "1.4.2";
+    public static final String VERSION = "1.5.0";
 
     public static final boolean ENABLE_EXAMPLES = false;
 
-    //#if FABRIC==1
+    //? if fabric {
     @Override
     public void onInitialize() {
         LOGGER.info("Necronomicon Initialized");
         init();
     }
-    //#endif
+    //? }
 
     /**
      * An example on how to register your custom config class.
@@ -60,11 +67,13 @@ public class CommonInitializer implements ModInitializer {
         }
     }
 
-    //#if FORGE==1
-    //$$ @SubscribeEvent
-    //$$ public void onCommonSetup(FMLCommonSetupEvent event) {
-    //$$     LOGGER.info("Necronomicon Initialized");
-    //$$     init();
-    //$$ }
-    //#endif
+    //? if forge || neoforge {
+    /*
+    @SubscribeEvent
+    public void onCommonSetup(FMLCommonSetupEvent event) {
+        LOGGER.info("Necronomicon Initialized");
+        init();
+    }
+    */
+    //? }
 }

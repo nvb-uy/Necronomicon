@@ -1,6 +1,8 @@
 {
   "pack": {
-    "description": "Necronomicon API Resources",
-    "pack_format": 7
+    "description": {
+      "text": "retrodamageindicators resources"
+    },
+    "pack_format": 15
   }
 }
