@@ -7,21 +7,32 @@ import elocindev.necronomicon.api.NecUtilsAPI;
 import elocindev.necronomicon.api.config.v1.NecConfigAPI;
 
 //? if forge {
-// import net.minecraftforge.eventbus.api.SubscribeEvent;
-// import net.minecraftforge.fml.common.Mod;
-// import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+/*
+
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+
+*/
 //?} elif neoforge {
-// import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-// import net.neoforged.fml.common.Mod;
-// import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+/*
+
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+
+*/
 //? }
 
 
 //? if (forge || neoforge) {
-// @Mod.EventBusSubscriber(modid = CommonInitializer.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-// @Mod(CommonInitializer.MODID)
-// public class CommonInitializer {
+/*
 
+@Mod.EventBusSubscriber(modid = CommonInitializer.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod(CommonInitializer.MODID)
+public class CommonInitializer {
+
+*/
 //?} elif fabric {
 import net.fabricmc.api.ModInitializer;
 
