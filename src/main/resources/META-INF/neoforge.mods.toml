@@ -13,7 +13,7 @@ license='MIT'
     '''
 
 [[dependencies.${mod_id}]]
-    modId="forge"
+    modId="neoforge"
     mandatory=true
     versionRange="*"
     ordering="NONE"

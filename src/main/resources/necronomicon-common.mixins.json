@@ -4,7 +4,7 @@
   "minVersion": 0.7,
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "AnimatedItemNameMixin"
+    "item.AnimatedItemNameMixin"
   ],
   "injectors": {
     "defaultRequire": 1
