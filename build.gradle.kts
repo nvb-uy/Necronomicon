@@ -134,6 +134,13 @@ loom {
 // 	finalizedBy("setupManifoldPreprocessors")
 // }
 
+// Move files to single directory
+tasks.register<Copy>("buildAndCollect") {
+    group = "build"
+    from(tasks.remapJar.get().archiveFile)
+    into(rootProject.layout.buildDirectory.file("libs/${mod.version}"))
+    dependsOn("build")
+}
 
 
 val buildAndCollect = tasks.register<Copy>("buildAndCollect") {
