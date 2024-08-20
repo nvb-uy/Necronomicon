@@ -2,7 +2,7 @@ package elocindev.necronomicon.mixin.common.item;
 
 //? if <=1.20.1 {
 
-/*import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -46,8 +46,8 @@ public abstract class AnimatedItemNameMixin {
     }
 }
 
-*///? } else {
-import org.spongepowered.asm.mixin.Mixin;
+//?} else {
+/*import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -133,4 +133,4 @@ public abstract class AnimatedItemNameMixin {
         }
     }
 }
-//? }
+*///?}

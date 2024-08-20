@@ -16,15 +16,15 @@ package elocindev.necronomicon.api.resource.v1;
 public class ResourceIdentifier {
     public static net.minecraft.resources.ResourceLocation of(String namespace, String path) {
         //? if <=1.20.4 {
-        /*return new net.minecraft.resources.ResourceLocation(namespace, path);
-        *///?} else {
-        return net.minecraft.resources.ResourceLocation.tryBuild(namespace, path);        //?}
+        return new net.minecraft.resources.ResourceLocation(namespace, path);
+        //?} else {
+        /*return net.minecraft.resources.ResourceLocation.tryBuild(namespace, path);        *///?}
     }
 
     public static net.minecraft.resources.ResourceLocation of(String id) {
         //? if <=1.20.1 {
-        /*return new net.minecraft.resources.ResourceLocation(id);
-        *///?} else {
-        return net.minecraft.resources.ResourceLocation.tryParse(id);        //?}
+        return new net.minecraft.resources.ResourceLocation(id);
+        //?} else {
+        /*return net.minecraft.resources.ResourceLocation.tryParse(id);        *///?}
     }
 }

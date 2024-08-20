@@ -81,7 +81,12 @@ public class NecUtilsAPI {
      * @return          [long] The time in ticks of the entity's world.
      */
     public static long getWorldTime(LivingEntity entity) {
+        //? if >=1.20.1 {
+        
         return entity.level().getGameTime();
+        //?} else {
+        /*return entity.getLevel().getGameTime();
+        *///?}
     }
 
     /**
@@ -110,15 +115,15 @@ public class NecUtilsAPI {
     public static boolean isModLoaded(String modid) {
         return
             //? if fabric {
-            /*net.fabricmc.loader.api.FabricLoader.getInstance().isModLoaded(modid);
-            *///?} elif forge {
-            /*
-            net.minecraftforge.fml.loading.FMLLoader.getLoadingModList().getModFileById(modid) != null;
-             */
-            //?} elif neoforge {
+            net.fabricmc.loader.api.FabricLoader.getInstance().isModLoaded(modid);
+            //?} elif forge {
             
-            net.neoforged.fml.loading.FMLLoader.getLoadingModList().getModFileById(modid) != null;
+            /*net.minecraftforge.fml.loading.FMLLoader.getLoadingModList().getModFileById(modid) != null;
              
-            //?}
+            *///?} elif neoforge {
+            
+            /*net.neoforged.fml.loading.FMLLoader.getLoadingModList().getModFileById(modid) != null;
+             
+            *///?}
     }
 }

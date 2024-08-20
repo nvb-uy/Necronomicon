@@ -1,7 +1,7 @@
 package elocindev.necronomicon.datagen;
 
 //? if fabric && >=1.20.1 {
-/*import com.google.gson.JsonElement;
+import com.google.gson.JsonElement;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.core.Direction;
@@ -160,4 +160,4 @@ public class ModelGenerator extends FabricModelProvider {
         modelCollector.accept(ModelLocationUtils.getModelLocation(block.asItem()), new DelegatedModel(parentModelId));
     }
 }
-*///?}
+//?}
