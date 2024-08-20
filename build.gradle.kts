@@ -37,7 +37,14 @@ val isSnapshot = hasProperty("env.snapshot")
 
 version = "${mod.version}+$mcVersion"
 group = mod.group
-base { archivesName.set("${mod.id}-$loader") }
+base {
+	val capitalizedLoader = when (loader) {
+        "neoforge" -> "NeoForge"
+        else -> loader.replaceFirstChar { it.uppercase() }
+    }
+
+    archivesName.set("${mod.name}-$capitalizedLoader")
+}
 
 // Dependencies
 repositories {
