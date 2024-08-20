@@ -3,6 +3,7 @@ package elocindev.necronomicon.item;
 //? if fabric {
 /*import elocindev.necronomicon.api.text.AnimatedText;
 import elocindev.necronomicon.api.text.IAnimatedText;
+import net.minecraft.world.item.ItemStack;
 *///?}
 import net.minecraft.world.item.Item;
 

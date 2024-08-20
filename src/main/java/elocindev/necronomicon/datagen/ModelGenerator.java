@@ -1,6 +1,6 @@
 package elocindev.necronomicon.datagen;
 
-//? if fabric {
+//? if fabric && >=1.20.1 {
 /*import com.google.gson.JsonElement;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;

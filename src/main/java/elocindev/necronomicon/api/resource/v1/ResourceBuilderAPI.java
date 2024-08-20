@@ -77,24 +77,23 @@ public class ResourceBuilderAPI {
     
     
     //? if forge {
-    
-    // public static void registerBuiltinPack(String modid, Path path, Component title, boolean enabledDefault, Component description, PackType packType, Pack.Position pos, boolean fixed) {
-    //     var pack = new PathPackResources(ModList.get().getModFileById(modid).getFile().getFileName() + ":" + path, true, path);
+    /*
+    public static void registerBuiltinPack(String modid, Path path, Component title, boolean enabledDefault, Component description, PackType packType, Pack.Position pos, boolean fixed) {
+        var pack = new PathPackResources(ModList.get().getModFileById(modid).getFile().getFileName() + ":" + path, true, path);
 
-    //     registerResourcePack(packType, () ->
-    //                 Pack.create(
-    //                         modid,
-    //                         title,
-    //                         enabledDefault,
-    //                         (s) -> pack,
-    //                         new Pack.Info(description, PACK_FORMAT, FeatureFlagSet.of()),
-    //                         packType,
-    //                         pos,
-    //                         fixed,
-    //                         PackSource.BUILT_IN));
-    // }
-    
-    //?}
+        registerResourcePack(packType, () ->
+                    Pack.create(
+                            modid,
+                            title,
+                            enabledDefault,
+                            (s) -> pack,
+                            new Pack.Info(description, PACK_FORMAT, FeatureFlagSet.of()),
+                            packType,
+                            pos,
+                            fixed,
+                            PackSource.BUILT_IN));
+    }
+    *///?}
 
     /**
      * Registers a builtin resource pack. Should be called in the constructor of your mod.
