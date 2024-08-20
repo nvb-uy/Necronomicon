@@ -44,6 +44,7 @@ import net.minecraft.network.chat.Component;
  * @since 1.0.4
  */
 public class ResourceBuilderAPI {
+    @SuppressWarnings("unused")
     private static final Logger LOGGER = LoggerFactory.getLogger("necronomicon");
 
     /**
