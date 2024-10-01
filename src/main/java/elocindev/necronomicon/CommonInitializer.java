@@ -36,7 +36,7 @@ public class CommonInitializer implements ModInitializer {
 
     public static final String MODID = "necronomicon";
     public static final Logger LOGGER = LoggerFactory.getLogger("necronomicon");
-    public static final String VERSION = "1.5.0";
+    public static final String VERSION = "1.6.0";
 
     public static final boolean ENABLE_EXAMPLES = false;
 

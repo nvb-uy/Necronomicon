@@ -1,5 +1,5 @@
 {
-  "required": true,
+  "required": false,
   "package": "elocindev.necronomicon.mixin.common",
   "minVersion": 0.7,
   "compatibilityLevel": "JAVA_17",
